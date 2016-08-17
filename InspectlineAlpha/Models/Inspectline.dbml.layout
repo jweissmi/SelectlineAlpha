@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Inspectline">
+  <DataContextMoniker Name="/InspectlineDataContext" />
+  <nestedChildShapes>
+    <classShape Id="de6e50e3-0236-4e79-8c0c-e6d16d919624" absoluteBounds="0.75, 1, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/InspectlineDataContext/Shop" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80c15704-4144-4ffc-86a0-733d1dd4a40c" absoluteBounds="0.765, 1.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf94d14f-9cc5-4ac5-914f-f613fb066c34" absoluteBounds="4.25, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/InspectlineDataContext/Inspection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82960217-08ff-4b64-bec5-2631a5ed3ad8" absoluteBounds="4.265, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.54890055338542); (4.25 : 2.54890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/InspectlineDataContext/Shop/Shop_Inspection" />
+      <nodes>
+        <classShapeMoniker Id="de6e50e3-0236-4e79-8c0c-e6d16d919624" />
+        <classShapeMoniker Id="cf94d14f-9cc5-4ac5-914f-f613fb066c34" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4a3cbcce-e886-4686-9309-bc80e9c04fa1" absoluteBounds="0.625, 4.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/InspectlineDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04c63af2-61de-425d-8313-aabe5aa6b53c" absoluteBounds="0.64000000000000012, 4.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 4.65625); (4.60416666666667 : 4.65625 : JumpStart); (4.77083333333333 : 4.65625 : JumpEnd); (5.5625 : 4.65625); (5.5625 : 3.72280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/InspectlineDataContext/Customer/Customer_Inspection" />
+      <nodes>
+        <classShapeMoniker Id="4a3cbcce-e886-4686-9309-bc80e9c04fa1" />
+        <classShapeMoniker Id="cf94d14f-9cc5-4ac5-914f-f613fb066c34" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="358cd914-a1e0-4ca1-a579-fc0278f62752" absoluteBounds="3.25, 5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/InspectlineDataContext/CustomerVehicle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="57ee8f86-0c44-478b-8be5-f73406aa3360" absoluteBounds="3.2649999999999997, 5.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.6875 : 5); (4.6875 : 3.72280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/InspectlineDataContext/CustomerVehicle/CustomerVehicle_Inspection" />
+      <nodes>
+        <classShapeMoniker Id="358cd914-a1e0-4ca1-a579-fc0278f62752" />
+        <classShapeMoniker Id="cf94d14f-9cc5-4ac5-914f-f613fb066c34" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 6.21235270182292); (3.25 : 6.21235270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/InspectlineDataContext/Customer/Customer_CustomerVehicle" />
+      <nodes>
+        <classShapeMoniker Id="4a3cbcce-e886-4686-9309-bc80e9c04fa1" />
+        <classShapeMoniker Id="358cd914-a1e0-4ca1-a579-fc0278f62752" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2a83b2aa-7394-4fab-8df1-7e21561fa3a9" absoluteBounds="5.875, 4.875, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/InspectlineDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37e82e6a-e89e-4283-ac1a-75949eddeb46" absoluteBounds="5.89, 5.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.0625005 : 4.875); (7.0625005 : 2.54890055338542); (6.25 : 2.54890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/InspectlineDataContext/Employee/Employee_Inspection" />
+      <nodes>
+        <classShapeMoniker Id="2a83b2aa-7394-4fab-8df1-7e21561fa3a9" />
+        <classShapeMoniker Id="cf94d14f-9cc5-4ac5-914f-f613fb066c34" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

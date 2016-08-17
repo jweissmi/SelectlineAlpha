@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnhancedStandard_VCDB_SB_Exported_PRD" Class="VehicleConfigurationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-BRM8A2N;Initial Catalog=EnhancedStandard_VCDB_SB_Exported_PRD;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnhancedStandard_VCDB_SB_Exported_PRDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VehicleConfigurationView" Member="VehicleConfigurationViews">
+    <Type Name="VehicleConfigurationView">
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MakeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SubmodelName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Liter" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
