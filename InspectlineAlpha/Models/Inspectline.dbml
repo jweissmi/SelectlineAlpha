@@ -6,8 +6,9 @@
       <Column Name="ShopName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="AddedOnDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Country" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="ShopPhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
       <Column Name="ShopEmail" Type="System.String" DbType="NVarChar(320)" CanBeNull="true" />
@@ -27,19 +28,19 @@
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />
       <Association Name="Customer_Inspection" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
-      <Association Name="CustomerVehicle_Inspection" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
       <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Customers" Member="Customers">
     <Type Name="Customer">
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="ContactName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="ContactTitle" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Country" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="CellPhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
       <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
@@ -59,7 +60,6 @@
       <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
       <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="EngineBaseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="CustomerVehicle_Inspection" Member="Inspections" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Inspection" />
       <Association Name="Customer_CustomerVehicle" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
     </Type>
   </Table>
@@ -72,8 +72,9 @@
       <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="HireDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Country" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="CellPhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
       <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />

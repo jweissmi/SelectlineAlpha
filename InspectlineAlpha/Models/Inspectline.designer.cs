@@ -134,7 +134,9 @@ namespace InspectlineAlpha.Models
 		
 		private string _City;
 		
-		private string _PostalCode;
+		private string _State;
+		
+		private string _ZipCode;
 		
 		private string _Country;
 		
@@ -160,8 +162,10 @@ namespace InspectlineAlpha.Models
     partial void OnAddressChanged();
     partial void OnCityChanging(string value);
     partial void OnCityChanged();
-    partial void OnPostalCodeChanging(string value);
-    partial void OnPostalCodeChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnZipCodeChanging(string value);
+    partial void OnZipCodeChanged();
     partial void OnCountryChanging(string value);
     partial void OnCountryChanged();
     partial void OnShopPhoneChanging(string value);
@@ -258,7 +262,7 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(20)")]
 		public string City
 		{
 			get
@@ -278,22 +282,42 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="NVarChar(10)")]
-		public string PostalCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(20)")]
+		public string State
 		{
 			get
 			{
-				return this._PostalCode;
+				return this._State;
 			}
 			set
 			{
-				if ((this._PostalCode != value))
+				if ((this._State != value))
 				{
-					this.OnPostalCodeChanging(value);
+					this.OnStateChanging(value);
 					this.SendPropertyChanging();
-					this._PostalCode = value;
-					this.SendPropertyChanged("PostalCode");
-					this.OnPostalCodeChanged();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZipCode", DbType="NVarChar(10)")]
+		public string ZipCode
+		{
+			get
+			{
+				return this._ZipCode;
+			}
+			set
+			{
+				if ((this._ZipCode != value))
+				{
+					this.OnZipCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ZipCode = value;
+					this.SendPropertyChanged("ZipCode");
+					this.OnZipCodeChanged();
 				}
 			}
 		}
@@ -450,8 +474,6 @@ namespace InspectlineAlpha.Models
 		
 		private EntityRef<Customer> _Customer;
 		
-		private EntityRef<CustomerVehicle> _CustomerVehicle;
-		
 		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
@@ -480,7 +502,6 @@ namespace InspectlineAlpha.Models
 		{
 			this._Shop = default(EntityRef<Shop>);
 			this._Customer = default(EntityRef<Customer>);
-			this._CustomerVehicle = default(EntityRef<CustomerVehicle>);
 			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
@@ -564,10 +585,6 @@ namespace InspectlineAlpha.Models
 			{
 				if ((this._CustomerVehicleID != value))
 				{
-					if (this._CustomerVehicle.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnCustomerVehicleIDChanging(value);
 					this.SendPropertyChanging();
 					this._CustomerVehicleID = value;
@@ -729,40 +746,6 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_CustomerVehicle", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID", IsForeignKey=true)]
-		public CustomerVehicle CustomerVehicle
-		{
-			get
-			{
-				return this._CustomerVehicle.Entity;
-			}
-			set
-			{
-				CustomerVehicle previousValue = this._CustomerVehicle.Entity;
-				if (((previousValue != value) 
-							|| (this._CustomerVehicle.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CustomerVehicle.Entity = null;
-						previousValue.Inspections.Remove(this);
-					}
-					this._CustomerVehicle.Entity = value;
-					if ((value != null))
-					{
-						value.Inspections.Add(this);
-						this._CustomerVehicleID = value.CustomerVehicleID;
-					}
-					else
-					{
-						this._CustomerVehicleID = default(int);
-					}
-					this.SendPropertyChanged("CustomerVehicle");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Inspection", Storage="_Employee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true)]
 		public Employee Employee
 		{
@@ -826,17 +809,19 @@ namespace InspectlineAlpha.Models
 		
 		private int _CustomerID;
 		
-		private string _CompanyName;
+		private string _LastName;
 		
-		private string _ContactName;
+		private string _FirstName;
 		
-		private string _ContactTitle;
+		private string _Title;
 		
 		private string _Address;
 		
 		private string _City;
 		
-		private string _PostalCode;
+		private string _State;
+		
+		private string _ZipCode;
 		
 		private string _Country;
 		
@@ -856,18 +841,20 @@ namespace InspectlineAlpha.Models
     partial void OnCreated();
     partial void OnCustomerIDChanging(int value);
     partial void OnCustomerIDChanged();
-    partial void OnCompanyNameChanging(string value);
-    partial void OnCompanyNameChanged();
-    partial void OnContactNameChanging(string value);
-    partial void OnContactNameChanged();
-    partial void OnContactTitleChanging(string value);
-    partial void OnContactTitleChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
     partial void OnAddressChanging(string value);
     partial void OnAddressChanged();
     partial void OnCityChanging(string value);
     partial void OnCityChanged();
-    partial void OnPostalCodeChanging(string value);
-    partial void OnPostalCodeChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnZipCodeChanging(string value);
+    partial void OnZipCodeChanged();
     partial void OnCountryChanging(string value);
     partial void OnCountryChanged();
     partial void OnCellPhoneChanging(string value);
@@ -905,62 +892,62 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
-		public string CompanyName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string LastName
 		{
 			get
 			{
-				return this._CompanyName;
+				return this._LastName;
 			}
 			set
 			{
-				if ((this._CompanyName != value))
+				if ((this._LastName != value))
 				{
-					this.OnCompanyNameChanging(value);
+					this.OnLastNameChanging(value);
 					this.SendPropertyChanging();
-					this._CompanyName = value;
-					this.SendPropertyChanged("CompanyName");
-					this.OnCompanyNameChanged();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactName", DbType="NVarChar(30)")]
-		public string ContactName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string FirstName
 		{
 			get
 			{
-				return this._ContactName;
+				return this._FirstName;
 			}
 			set
 			{
-				if ((this._ContactName != value))
+				if ((this._FirstName != value))
 				{
-					this.OnContactNameChanging(value);
+					this.OnFirstNameChanging(value);
 					this.SendPropertyChanging();
-					this._ContactName = value;
-					this.SendPropertyChanged("ContactName");
-					this.OnContactNameChanged();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactTitle", DbType="NVarChar(30)")]
-		public string ContactTitle
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(30)")]
+		public string Title
 		{
 			get
 			{
-				return this._ContactTitle;
+				return this._Title;
 			}
 			set
 			{
-				if ((this._ContactTitle != value))
+				if ((this._Title != value))
 				{
-					this.OnContactTitleChanging(value);
+					this.OnTitleChanging(value);
 					this.SendPropertyChanging();
-					this._ContactTitle = value;
-					this.SendPropertyChanged("ContactTitle");
-					this.OnContactTitleChanged();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
 				}
 			}
 		}
@@ -985,7 +972,7 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(20)")]
 		public string City
 		{
 			get
@@ -1005,22 +992,42 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="NVarChar(10)")]
-		public string PostalCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(20)")]
+		public string State
 		{
 			get
 			{
-				return this._PostalCode;
+				return this._State;
 			}
 			set
 			{
-				if ((this._PostalCode != value))
+				if ((this._State != value))
 				{
-					this.OnPostalCodeChanging(value);
+					this.OnStateChanging(value);
 					this.SendPropertyChanging();
-					this._PostalCode = value;
-					this.SendPropertyChanged("PostalCode");
-					this.OnPostalCodeChanged();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZipCode", DbType="NVarChar(10)")]
+		public string ZipCode
+		{
+			get
+			{
+				return this._ZipCode;
+			}
+			set
+			{
+				if ((this._ZipCode != value))
+				{
+					this.OnZipCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ZipCode = value;
+					this.SendPropertyChanged("ZipCode");
+					this.OnZipCodeChanged();
 				}
 			}
 		}
@@ -1200,8 +1207,6 @@ namespace InspectlineAlpha.Models
 		
 		private int _EngineBaseID;
 		
-		private EntitySet<Inspection> _Inspections;
-		
 		private EntityRef<Customer> _Customer;
 		
     #region Extensibility Method Definitions
@@ -1230,7 +1235,6 @@ namespace InspectlineAlpha.Models
 		
 		public CustomerVehicle()
 		{
-			this._Inspections = new EntitySet<Inspection>(new Action<Inspection>(this.attach_Inspections), new Action<Inspection>(this.detach_Inspections));
 			this._Customer = default(EntityRef<Customer>);
 			OnCreated();
 		}
@@ -1419,19 +1423,6 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_Inspections", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID")]
-		public EntitySet<Inspection> Inspections
-		{
-			get
-			{
-				return this._Inspections;
-			}
-			set
-			{
-				this._Inspections.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_CustomerVehicle", Storage="_Customer", ThisKey="CustomerID", OtherKey="CustomerID", IsForeignKey=true)]
 		public Customer Customer
 		{
@@ -1485,18 +1476,6 @@ namespace InspectlineAlpha.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Inspections(Inspection entity)
-		{
-			this.SendPropertyChanging();
-			entity.CustomerVehicle = this;
-		}
-		
-		private void detach_Inspections(Inspection entity)
-		{
-			this.SendPropertyChanging();
-			entity.CustomerVehicle = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
@@ -1521,7 +1500,9 @@ namespace InspectlineAlpha.Models
 		
 		private string _City;
 		
-		private string _PostalCode;
+		private string _State;
+		
+		private string _ZipCode;
 		
 		private string _Country;
 		
@@ -1553,8 +1534,10 @@ namespace InspectlineAlpha.Models
     partial void OnAddressChanged();
     partial void OnCityChanging(string value);
     partial void OnCityChanged();
-    partial void OnPostalCodeChanging(string value);
-    partial void OnPostalCodeChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnZipCodeChanging(string value);
+    partial void OnZipCodeChanged();
     partial void OnCountryChanging(string value);
     partial void OnCountryChanged();
     partial void OnCellPhoneChanging(string value);
@@ -1711,7 +1694,7 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(20)")]
 		public string City
 		{
 			get
@@ -1731,22 +1714,42 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostalCode", DbType="NVarChar(10)")]
-		public string PostalCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(20)")]
+		public string State
 		{
 			get
 			{
-				return this._PostalCode;
+				return this._State;
 			}
 			set
 			{
-				if ((this._PostalCode != value))
+				if ((this._State != value))
 				{
-					this.OnPostalCodeChanging(value);
+					this.OnStateChanging(value);
 					this.SendPropertyChanging();
-					this._PostalCode = value;
-					this.SendPropertyChanged("PostalCode");
-					this.OnPostalCodeChanged();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZipCode", DbType="NVarChar(10)")]
+		public string ZipCode
+		{
+			get
+			{
+				return this._ZipCode;
+			}
+			set
+			{
+				if ((this._ZipCode != value))
+				{
+					this.OnZipCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ZipCode = value;
+					this.SendPropertyChanged("ZipCode");
+					this.OnZipCodeChanged();
 				}
 			}
 		}
