@@ -4,39 +4,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.Entity;
+using System.Net;
+using System.Data.Entity.Core.Objects;
 
 namespace InspectlineAlpha.Controllers
 {
-    public class VehicleConfigurationController : Controller
+    public class EmployeeController : Controller
     {
-        private VehicleConfigurationView VCdb = new VehicleConfigurationView();
 
-        // GET: VehicleConfiguration
+        private InspectlineDataContext db = new InspectlineDataContext();
+
+        // GET: Employee
         public ActionResult Index()
         {
-            return View(VCdb.YearID);
+            return View(db.Employees.ToList());
         }
 
-        public ActionResult SelectYear(int? selYear)
+        // GET: Employee/Details/5
+        public ActionResult EmployeeDetails(int id)
         {
             return View();
         }
 
-        // GET: VehicleConfiguration/Details/5
-        public ActionResult Details(int id)
+        // GET: Employee/Create
+        public ActionResult CreateEmployee()
         {
             return View();
         }
 
-        // GET: VehicleConfiguration/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: VehicleConfiguration/Create
+        // POST: Employee/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateEmployee(FormCollection collection)
         {
             try
             {
@@ -50,15 +50,15 @@ namespace InspectlineAlpha.Controllers
             }
         }
 
-        // GET: VehicleConfiguration/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Employee/Edit/5
+        public ActionResult EditEmployee(int id)
         {
             return View();
         }
 
-        // POST: VehicleConfiguration/Edit/5
+        // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditEmployee(int id, FormCollection collection)
         {
             try
             {
@@ -72,15 +72,15 @@ namespace InspectlineAlpha.Controllers
             }
         }
 
-        // GET: VehicleConfiguration/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Employee/Delete/5
+        public ActionResult DeleteEmployee(int id)
         {
             return View();
         }
 
-        // POST: VehicleConfiguration/Delete/5
+        // POST: Employee/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteEmployee(int id, FormCollection collection)
         {
             try
             {
