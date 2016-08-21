@@ -14,18 +14,23 @@ namespace InspectlineAlpha.Controllers
     public class EmployeeController : Controller
     {
 
-        private InspectlineDataContext db = new InspectlineDataContext();
+        private InspectlineDataContext edb = new InspectlineDataContext();
 
         // GET: Employee
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            return View(edb.Employees.ToList());
         }
 
-        // GET: Employee/Details/5
-        public ActionResult EmployeeDetails(int id)
+        // GET: Employee/Details/
+        public ActionResult EmployeeDetails(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            Employee employee = Employee.GetEmpById(id, edb);
+
+            return View(employee);
         }
 
         // GET: Employee/Create
@@ -36,56 +41,58 @@ namespace InspectlineAlpha.Controllers
 
         // POST: Employee/Create
         [HttpPost]
-        public ActionResult CreateEmployee(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEmployee([Bind(Include = "FirstName, LastName, Title, BirthDate, HireDate, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email")] Employee employee)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                Employee.CreateEmployee(employee, edb);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(employee);
         }
 
-        // GET: Employee/Edit/5
-        public ActionResult EditEmployee(int id)
+        // GET: Employee/Edit/
+        public ActionResult EditEmployee(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            Employee employee = Employee.GetEmpById(id, edb);
+
+            return View(employee);
         }
 
-        // POST: Employee/Edit/5
+        // POST: Employee/Edit/
         [HttpPost]
-        public ActionResult EditEmployee(int id, FormCollection collection)
+        public ActionResult EditEmployee([Bind(Include = "FirstName, LastName, Title, BirthDate, HireDate, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email")] Employee employee)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                Employee.EditEmployee(employee, edb);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(employee);
         }
 
-        // GET: Employee/Delete/5
-        public ActionResult DeleteEmployee(int id)
+        // GET: Employee/Delete/
+        public ActionResult DeleteEmployee(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            Employee emp = Employee.GetEmpById(id, edb);
+
+            return View(emp);
         }
 
-        // POST: Employee/Delete/5
-        [HttpPost]
-        public ActionResult DeleteEmployee(int id, FormCollection collection)
+        // POST: Employee/Delete/
+        [HttpPost, ActionName("DeleteEmployee")]
+        public ActionResult DeleteConfirmed(int? id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Employee.DeleteEmpById(id, edb);
                 return RedirectToAction("Index");
             }
             catch

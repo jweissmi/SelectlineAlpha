@@ -23,7 +23,7 @@ namespace InspectlineAlpha.Models
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EnhancedStandard_VCDB_SB_Exported_PRD")]
-	public partial class VehicleConfigurationDataContext : System.Data.Linq.DataContext
+	public partial class VehicleConfigDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -32,47 +32,47 @@ namespace InspectlineAlpha.Models
     partial void OnCreated();
     #endregion
 		
-		public VehicleConfigurationDataContext() : 
+		public VehicleConfigDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["EnhancedStandard_VCDB_SB_Exported_PRDConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public VehicleConfigurationDataContext(string connection) : 
+		public VehicleConfigDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public VehicleConfigurationDataContext(System.Data.IDbConnection connection) : 
+		public VehicleConfigDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public VehicleConfigurationDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public VehicleConfigDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public VehicleConfigurationDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public VehicleConfigDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<VehicleConfigurationView> VehicleConfigurationViews
+		public System.Data.Linq.Table<VehicleConfiguration> VehicleConfigurations
 		{
 			get
 			{
-				return this.GetTable<VehicleConfigurationView>();
+				return this.GetTable<VehicleConfiguration>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VehicleConfigurationView")]
-	public partial class VehicleConfigurationView
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VehicleConfiguration")]
+	public partial class VehicleConfiguration
 	{
 		
 		private int _YearID;
@@ -89,7 +89,7 @@ namespace InspectlineAlpha.Models
 		
 		private int _EngineBaseID;
 		
-		public VehicleConfigurationView()
+		public VehicleConfiguration()
 		{
 		}
 		

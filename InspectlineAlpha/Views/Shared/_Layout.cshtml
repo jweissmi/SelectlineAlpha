@@ -29,8 +29,18 @@
                             Customers <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Add a Customer", "Createcustomer", "Customer")</li>
+                            <li>@Html.ActionLink("Add a Customer", "CreateCustomer", "Customer")</li>
                             <li>@Html.ActionLink("Customer List", "Index", "Customer")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Employees <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add an Employee", "CreateEmployee", "Employee")</li>
+                            <li>@Html.ActionLink("Employee List", "Index", "Employee")</li>
                         </ul>
                     </li>
                 </ul>

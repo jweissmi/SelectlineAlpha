@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnhancedStandard_VCDB_SB_Exported_PRD" Class="VehicleConfigurationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnhancedStandard_VCDB_SB_Exported_PRD" Class="VehicleConfigDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-BRM8A2N;Initial Catalog=EnhancedStandard_VCDB_SB_Exported_PRD;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnhancedStandard_VCDB_SB_Exported_PRDConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.VehicleConfigurationView" Member="VehicleConfigurationViews">
-    <Type Name="VehicleConfigurationView">
+  <Table Name="dbo.VehicleConfiguration" Member="VehicleConfigurations">
+    <Type Name="VehicleConfiguration">
       <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MakeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ModelName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />

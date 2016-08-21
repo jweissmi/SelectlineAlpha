@@ -160,7 +160,6 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VehicleConfigurationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,13 +170,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Inspectline.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\VehicleConfiguration.designer.cs">
+    <Compile Include="Models\VehicleConfig.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VehicleConfiguration.dbml</DependentUpon>
+      <DependentUpon>VehicleConfig.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\VehicleConfigurationView.cs" />
-    <Compile Include="Models\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleSelectionQueries.cs" />
   </ItemGroup>
@@ -195,14 +192,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\VehicleConfiguration.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>VehicleConfiguration.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Models\Inspectline.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Inspectline.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\VehicleConfig.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>VehicleConfig.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -236,9 +233,6 @@
     <Content Include="Views\Customer\CreateCustomer.cshtml" />
     <Content Include="Views\Customer\EditCustomer.cshtml" />
     <Content Include="Views\Customer\DeleteCustomer.cshtml" />
-    <Content Include="Views\VehicleConfiguration\Index_old.cshtml" />
-    <Content Include="Views\VehicleConfiguration\Index.cshtml" />
-    <Content Include="Views\VehicleConfiguration\SelectYear.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\EmployeeDetails.cshtml" />
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
@@ -260,13 +254,13 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\VehicleConfiguration.dbml.layout">
-      <DependentUpon>VehicleConfiguration.dbml</DependentUpon>
+    <None Include="Models\Inspectline.dbml.layout">
+      <DependentUpon>Inspectline.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\Inspectline.dbml.layout">
-      <DependentUpon>Inspectline.dbml</DependentUpon>
+    <None Include="Models\VehicleConfig.dbml.layout">
+      <DependentUpon>VehicleConfig.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

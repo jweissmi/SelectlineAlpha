@@ -12,7 +12,7 @@ namespace SampleSelectionQueries
         static void Main(string[] args)
         {
 
-             VehicleConfigurationDataContext VCdb = new VehicleConfigurationDataContext();
+             VehicleConfigDataContext VCdb = new VehicleConfigDataContext();
 
             if (!VCdb.DatabaseExists())
                 throw new Exception();
@@ -20,7 +20,7 @@ namespace SampleSelectionQueries
             Console.WriteLine("Years:");
 
             //Get Years
-            var syear = (from yr in VCdb.VehicleConfigurationViews
+            var syear = (from yr in VCdb.VehicleConfigurations
                          select yr.YearID).Distinct().OrderByDescending(yr => yr);
 
             foreach (var yr in syear)
@@ -32,7 +32,7 @@ namespace SampleSelectionQueries
             Console.WriteLine("Makes for Selected Year:");
 
             //Get Makes for Selected Year
-            var yrmake = (from mk in VCdb.VehicleConfigurationViews
+            var yrmake = (from mk in VCdb.VehicleConfigurations
                           where mk.YearID == 2015
                           select mk.MakeName).Distinct().OrderBy(mk => mk);
 
@@ -45,7 +45,7 @@ namespace SampleSelectionQueries
             Console.WriteLine("Models for Selected Year and Make:");
 
             //Get Models for Selected Year and Make
-            var yrmakemod = (from mkmod in VCdb.VehicleConfigurationViews
+            var yrmakemod = (from mkmod in VCdb.VehicleConfigurations
                              where mkmod.YearID == 2015 && mkmod.MakeName == "Ford"
                              select mkmod.ModelName).Distinct().OrderBy(mkmod => mkmod);
 
@@ -58,7 +58,7 @@ namespace SampleSelectionQueries
             Console.WriteLine("Engines for Selected Year, Make, and Model:");
 
             //Get Engine for Selected Year, Make, and Model
-            var yrmakemodeng = (from mkmoden in VCdb.VehicleConfigurationViews
+            var yrmakemodeng = (from mkmoden in VCdb.VehicleConfigurations
                                 where mkmoden.YearID == 2015 && mkmoden.MakeName == "Ford" && mkmoden.ModelName == "Fusion"
                                 select mkmoden.Liter).Distinct();
 
@@ -71,7 +71,7 @@ namespace SampleSelectionQueries
             Console.WriteLine("Distinct Year, Make, Model, Engine and BaseVehicleID:");
 
             //Get BaseVehicleID for Selected Year, Make, Model and Engine 
-            var bvid = (from bv in VCdb.VehicleConfigurationViews
+            var bvid = (from bv in VCdb.VehicleConfigurations
                         where bv.YearID == 2015 && bv.MakeName == "Ford" && bv.ModelName == "Fusion" && bv.Liter == "2.0"
                         select new { bv.YearID, bv.MakeName, bv.ModelName, bv.Liter, bv.BaseVehicleID }).Distinct();
 
