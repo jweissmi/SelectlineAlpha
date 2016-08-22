@@ -44,7 +44,7 @@ namespace InspectlineAlpha.Models
             return customer;
         }
 
-        public static void DeleteById(int? id, InspectlineDataContext db)
+        public static void DeleteCustById(int? id, InspectlineDataContext db)
         {
             Customer customer = (from c in db.Customers
                                  where c.CustomerID == id

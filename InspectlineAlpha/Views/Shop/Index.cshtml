@@ -1,24 +1,21 @@
-﻿@model IEnumerable<InspectlineAlpha.Models.Customer>
+﻿@model IEnumerable<InspectlineAlpha.Models.Shop>
 
 @{
-    ViewBag.Title = "Customer Index";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateCustomer")
+    @Html.ActionLink("Create New", "CreateShop")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.ShopName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.AddedOnDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -36,28 +33,24 @@
             @Html.DisplayNameFor(model => model.Country)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CellPhone)
+            @Html.DisplayNameFor(model => model.ShopPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HomePhone)
+            @Html.DisplayNameFor(model => model.ShopEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.ShopWebsite)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => item.ShopName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.AddedOnDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
@@ -75,18 +68,18 @@
             @Html.DisplayFor(modelItem => item.Country)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CellPhone)
+            @Html.DisplayFor(modelItem => item.ShopPhone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HomePhone)
+            @Html.DisplayFor(modelItem => item.ShopEmail)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(modelItem => item.ShopWebsite)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditCustomer", new { id = item.CustomerID }) |
-            @Html.ActionLink("Details", "CustomerDetails", new { id = item.CustomerID }) |
-            @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.CustomerID })
+            @Html.ActionLink("Edit", "EditShop", new { id=item.ShopID }) |
+            @Html.ActionLink("Details", "ShopDetails", new { id=item.ShopID }) |
+            @Html.ActionLink("Delete", "DeleteShop", new { id=item.ShopID })
         </td>
     </tr>
 }

@@ -8,15 +8,15 @@ namespace InspectlineAlpha.Models
 {
     public partial class Employee
     {
-        public static void CreateEmployee(Employee employee, InspectlineDataContext edb)
+        public static void CreateEmployee(Employee employee, InspectlineDataContext db)
         {
-            edb.Employees.InsertOnSubmit(employee);
-            edb.SubmitChanges();
+            db.Employees.InsertOnSubmit(employee);
+            db.SubmitChanges();
         }
 
-        public static void EditEmployee(Employee employee, InspectlineDataContext edb)
+        public static void EditEmployee(Employee employee, InspectlineDataContext db)
         {
-            var orgEmployee = (from e in edb.Employees
+            var orgEmployee = (from e in db.Employees
                                where e.EmployeeID == employee.EmployeeID
                                select e).FirstOrDefault();
 
@@ -33,26 +33,26 @@ namespace InspectlineAlpha.Models
             orgEmployee.CellPhone = employee.CellPhone;
             orgEmployee.HomePhone = employee.HomePhone;
             orgEmployee.Email = employee.Email;
-            edb.SubmitChanges();
+            db.SubmitChanges();
         }
 
-        public static Employee GetEmpById(int? id, InspectlineDataContext edb)
+        public static Employee GetEmpById(int? id, InspectlineDataContext db)
         {
-            Employee employee = (from e in edb.Employees
+            Employee employee = (from e in db.Employees
                                  where e.EmployeeID == id
                                  select e).FirstOrDefault();
 
             return employee;
         }
 
-        public static void DeleteEmpById(int? id, InspectlineDataContext edb)
+        public static void DeleteEmpById(int? id, InspectlineDataContext db)
         {
-            Employee employee = (from e in edb.Employees
+            Employee employee = (from e in db.Employees
                                  where e.EmployeeID == id
                                  select e).FirstOrDefault();
 
-            edb.Employees.DeleteOnSubmit(employee);
-            edb.SubmitChanges();
+            db.Employees.DeleteOnSubmit(employee);
+            db.SubmitChanges();
         }
     }
 }

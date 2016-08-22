@@ -29,6 +29,7 @@
       <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />
       <Association Name="Customer_Inspection" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
       <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="CustomerVehicle_Inspection" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Customers" Member="Customers">
@@ -49,20 +50,6 @@
       <Association Name="Customer_CustomerVehicle" Member="CustomerVehicles" ThisKey="CustomerID" OtherKey="CustomerID" Type="CustomerVehicle" />
     </Type>
   </Table>
-  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
-    <Type Name="CustomerVehicle">
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Customer_CustomerVehicle" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Employees" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -80,6 +67,21 @@
       <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(320)" CanBeNull="true" />
       <Association Name="Employee_Inspection" Member="Inspections" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Inspection" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
+    <Type Name="CustomerVehicle">
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerVehicle_Inspection" Member="Inspections" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Inspection" />
+      <Association Name="Customer_CustomerVehicle" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -14,12 +14,12 @@ namespace InspectlineAlpha.Controllers
     public class EmployeeController : Controller
     {
 
-        private InspectlineDataContext edb = new InspectlineDataContext();
+        private InspectlineDataContext db = new InspectlineDataContext();
 
         // GET: Employee
         public ActionResult Index()
         {
-            return View(edb.Employees.ToList());
+            return View(db.Employees.ToList());
         }
 
         // GET: Employee/Details/
@@ -28,7 +28,7 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            Employee employee = Employee.GetEmpById(id, edb);
+            Employee employee = Employee.GetEmpById(id, db);
 
             return View(employee);
         }
@@ -46,30 +46,30 @@ namespace InspectlineAlpha.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee.CreateEmployee(employee, edb);
+                Employee.CreateEmployee(employee, db);
                 return RedirectToAction("Index");
             }
             return View(employee);
         }
 
-        // GET: Employee/Edit/
+        // GET: Customer/EditEmployee/
         public ActionResult EditEmployee(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            Employee employee = Employee.GetEmpById(id, edb);
+            Employee employee = Employee.GetEmpById(id, db);
 
             return View(employee);
         }
 
-        // POST: Employee/Edit/
+        // POST: Customer/EditEmployee/
         [HttpPost]
-        public ActionResult EditEmployee([Bind(Include = "FirstName, LastName, Title, BirthDate, HireDate, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email")] Employee employee)
+        public ActionResult EditEmployee([Bind(Include = "EmployeeID, LastName, FirstName, Title, BirthDate, HireDate, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                Employee.EditEmployee(employee, edb);
+                Employee.EditEmployee(employee, db);
                 return RedirectToAction("Index");
             }
             return View(employee);
@@ -81,7 +81,7 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            Employee emp = Employee.GetEmpById(id, edb);
+            Employee emp = Employee.GetEmpById(id, db);
 
             return View(emp);
         }
@@ -92,7 +92,7 @@ namespace InspectlineAlpha.Controllers
         {
             try
             {
-                Employee.DeleteEmpById(id, edb);
+                Employee.DeleteEmpById(id, db);
                 return RedirectToAction("Index");
             }
             catch

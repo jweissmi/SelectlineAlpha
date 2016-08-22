@@ -1,0 +1,88 @@
+﻿@model InspectlineAlpha.Models.CustomerVehicle
+
+@{
+    ViewBag.Title = "DeleteCustVeh";
+}
+
+<h2>DeleteCustVeh</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Customer Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmodelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmodelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Liter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Liter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseVehicleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseVehicleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngineBaseID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngineBaseID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

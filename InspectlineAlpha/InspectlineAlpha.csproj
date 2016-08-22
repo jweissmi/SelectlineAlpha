@@ -158,18 +158,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerVehicleController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerVehicle.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Inspectline.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Inspectline.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\VehicleConfig.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +242,16 @@
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Views\Employee\EditEmployee.cshtml" />
     <Content Include="Views\Employee\DeleteEmployee.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\ShopDetails.cshtml" />
+    <Content Include="Views\Shop\CreateShop.cshtml" />
+    <Content Include="Views\Shop\DeleteShop.cshtml" />
+    <Content Include="Views\Shop\EditShop.cshtml" />
+    <Content Include="Views\CustomerVehicle\Index.cshtml" />
+    <Content Include="Views\CustomerVehicle\CreateCustVeh.cshtml" />
+    <Content Include="Views\CustomerVehicle\DeleteCustVeh.cshtml" />
+    <Content Include="Views\CustomerVehicle\CustVehDetails.cshtml" />
+    <Content Include="Views\CustomerVehicle\EditCustVeh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -91,7 +91,7 @@ namespace InspectlineAlpha.Controllers
         {
             try
             {
-                Customer.DeleteById(id, db);
+                Customer.DeleteCustById(id, db);
                 return RedirectToAction("Index");
             }
             catch
