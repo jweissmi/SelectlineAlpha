@@ -14,7 +14,7 @@ namespace InspectlineAlpha.Models
             db.SubmitChanges();
         }
 
-      
+
         public static void EditCustVeh(CustomerVehicle custveh, InspectlineDataContext db)
         {
             var orgCustVeh = (from cv in db.CustomerVehicles
@@ -31,12 +31,12 @@ namespace InspectlineAlpha.Models
             orgCustVeh.EngineBaseID = custveh.EngineBaseID;
             db.SubmitChanges();
         }
-        
+
         public static CustomerVehicle GetCustVehById(int? id, InspectlineDataContext db)
         {
             CustomerVehicle custveh = (from cv in db.CustomerVehicles
-                                 where cv.CustomerVehicleID == id
-                                 select cv).FirstOrDefault();
+                                       where cv.CustomerVehicleID == id
+                                       select cv).FirstOrDefault();
 
             return custveh;
         }
@@ -50,6 +50,8 @@ namespace InspectlineAlpha.Models
             db.CustomerVehicles.DeleteOnSubmit(custveh);
             db.SubmitChanges();
         }
+
+
 
     }
 }

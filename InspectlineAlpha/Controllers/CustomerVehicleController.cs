@@ -57,9 +57,10 @@ namespace InspectlineAlpha.Controllers
             CustomerVehicle custveh = CustomerVehicle.GetCustVehById(id, db);
 
             return View(custveh);
-        }      
+        }
 
         // POST: CustomerVehicle/EditCustVeh/
+        [HttpPost]
         public ActionResult EditCustVeh([Bind(Include = "CustomerVehicleID, CustomerID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
         {
             if (ModelState.IsValid)
