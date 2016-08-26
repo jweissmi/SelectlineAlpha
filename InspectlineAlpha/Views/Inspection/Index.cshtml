@@ -1,0 +1,134 @@
+﻿@model InspectlineAlpha.ViewModel.InspectionViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inspectline Vehicle Inspection</h2>
+<section>
+    <div class="col-md-4">
+        <h4>Customer</h4>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+        </p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.CellPhone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.CellPhone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Email)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Customer Vehicle</h4>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+        </p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CustVeh.YearID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CustVeh.YearID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CustVeh.MakeName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CustVeh.MakeName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CustVeh.ModelName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CustVeh.ModelName)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Shop</h4>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+        </p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Shop.ShopName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Shop.ShopName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Shop.ShopPhone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Shop.ShopPhone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Shop.ShopWebsite)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Shop.ShopWebsite)
+            </dd>
+        </dl>
+    </div>
+</section>
+
+@*Add 2 Buttons - Save, Clear*@
+
+<section>
+    <table>
+        <tr>
+            <td><img src="~/Images/ExteriorInspect.png" alt="Exterior Inspection" style="height:50%;"></td>
+            <td valign="top"><img src="~/Images/TireInspect.png" alt="Tire Inspection" style="height:50%;"></td>
+        </tr>
+        <tr>
+            <td valign="top"><img src="~/Images/BattUnderhoodInspection.png" alt="Exterior Inspection" style="height:50%;"></td>
+            <td valign="top"><img src="~/Images/BrakeInspect.png" alt="Tire Inspection" style="height:50%;"></td>
+        </tr>
+        <tr>
+            <td align="right"><img src="~/Images/UnderVehicleInspect.png" alt="Exterior Inspection" style="height:50%;"></td>
+            <td valign="top"><img src="~/Images/Comments.png" alt="Tire Inspection" style="height:50%;"></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <br />
+</section>
+
+<section>
+    <table>
+        <tr>
+            <td>Inspection Performed By:</td>
+            <td>___________________________________</td>
+            <td>Inspection Date:</td>
+            <td>___________________________________</td>
+        </tr>
+    </table>
+</section>

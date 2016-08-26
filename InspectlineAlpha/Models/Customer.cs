@@ -1,11 +1,15 @@
 ﻿using InspectlineAlpha.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace InspectlineAlpha.Models
 {
+    [MetadataType(typeof(CustomerMetaData))]
+
     public partial class Customer
     {
 
@@ -53,6 +57,22 @@ namespace InspectlineAlpha.Models
             db.Customers.DeleteOnSubmit(customer);
             db.SubmitChanges();
         }
+    }
+    public class CustomerMetaData
+    {
+        [DisplayName("First Name")]
+        public string FirstName { get; set; }
 
+        [DisplayName("Last Name")]
+        public string LastName { get; set; }
+
+        [DisplayName("Zip Code")]
+        public string ZipCode { get; set; }
+
+        [DisplayName("Cell Phone")]
+        public string CellPhone { get; set; }
+
+        [DisplayName("Home Phone")]
+        public string HomePhone { get; set; }
     }
 }

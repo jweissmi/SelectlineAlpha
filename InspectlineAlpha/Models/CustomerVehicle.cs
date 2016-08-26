@@ -1,11 +1,15 @@
 ﻿using InspectlineAlpha.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace InspectlineAlpha.Models
 {
+    [MetadataType(typeof(CustomerVehicleMetaData))]
+
     public partial class CustomerVehicle
     {
         public static void CreateCustVeh(CustomerVehicle custveh, InspectlineDataContext db)
@@ -50,8 +54,16 @@ namespace InspectlineAlpha.Models
             db.CustomerVehicles.DeleteOnSubmit(custveh);
             db.SubmitChanges();
         }
+    }
+    public class CustomerVehicleMetaData
+    {
+        [DisplayName("Year")]
+        public string YearID { get; set; }
 
+        [DisplayName("Make")]
+        public string MakeName { get; set; }
 
-
+        [DisplayName("Model")]
+        public string ModelName { get; set; }
     }
 }

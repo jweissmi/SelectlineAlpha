@@ -1,11 +1,15 @@
 ﻿using InspectlineAlpha.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace InspectlineAlpha.Models
 {
+    [MetadataType(typeof(EmployeeMetaData))]
+
     public partial class Employee
     {
         public static void CreateEmployee(Employee employee, InspectlineDataContext db)
@@ -54,5 +58,28 @@ namespace InspectlineAlpha.Models
             db.Employees.DeleteOnSubmit(employee);
             db.SubmitChanges();
         }
+    }
+    public class EmployeeMetaData
+    {
+        [DisplayName("First Name")]
+        public string FirstName { get; set; }
+
+        [DisplayName("Last Name")]
+        public string LastName { get; set; }
+
+        [DisplayName("Birth Date")]
+        public string BirthDate { get; set; }
+
+        [DisplayName("Hire Date")]
+        public string HireDate { get; set; }
+
+        [DisplayName("Zip Code")]
+        public string ZipCode { get; set; }
+
+        [DisplayName("Cell Phone")]
+        public string CellPhone { get; set; }
+
+        [DisplayName("Home Phone")]
+        public string HomePhone { get; set; }
     }
 }
