@@ -38,7 +38,7 @@ namespace InspectlineAlpha.Controllers
         // POST: CustomerVehicle/CreateCustVeh
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCustVeh([Bind(Include = "MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
+        public ActionResult CreateCustVeh([Bind(Include = "YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace InspectlineAlpha.Controllers
 
         // POST: CustomerVehicle/EditCustVeh/
         [HttpPost]
-        public ActionResult EditCustVeh([Bind(Include = "CustomerVehicleID, CustomerID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
+        public ActionResult EditCustVeh([Bind(Include = "CustomerVehicleID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
         {
             if (ModelState.IsValid)
             {

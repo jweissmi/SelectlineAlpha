@@ -162,7 +162,6 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InspectionController.cs" />
-    <Compile Include="Controllers\InspectionFormController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -171,7 +170,6 @@
     <Compile Include="Models\CustomerVehicle.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Inspection.cs" />
-    <Compile Include="Models\InspectionForm.cs" />
     <Compile Include="Models\Inspectline.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,6 +183,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleSelectionQueries.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\InspectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,11 +267,9 @@
     <Content Include="Views\CustomerVehicle\CustVehDetails.cshtml" />
     <Content Include="Views\CustomerVehicle\EditCustVeh.cshtml" />
     <Content Include="Views\Inspection\Index.cshtml" />
-    <Content Include="Views\Inspection\StartInspection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\InspectionForm\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

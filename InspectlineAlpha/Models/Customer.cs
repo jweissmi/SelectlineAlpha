@@ -27,6 +27,7 @@ namespace InspectlineAlpha.Models
 
             orgCustomer.FirstName = customer.FirstName;
             orgCustomer.LastName = customer.LastName;
+            orgCustomer.CustomerVehicleID = customer.CustomerID;
             orgCustomer.Title = customer.Title;
             orgCustomer.Address = customer.Address;
             orgCustomer.City = customer.City;

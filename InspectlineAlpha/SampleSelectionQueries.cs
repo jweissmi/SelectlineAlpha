@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace SampleSelectionQueries
 {
+    //These are here as an example only.  To test, create a consoe appication and bring in the necessary tables.
     class Program
     {
         static void Main(string[] args)
         {
-
-             VehicleConfigDataContext VCdb = new VehicleConfigDataContext();
+            VehicleConfigDataContext VCdb = new VehicleConfigDataContext();
 
             if (!VCdb.DatabaseExists())
                 throw new Exception();
 
+            Console.WriteLine();
             Console.WriteLine("Years:");
 
             //Get Years
-            var syear = (from yr in VCdb.VehicleConfigurations
+            var syear = (from yr in VCdb.Years
+                         where yr.YearID >= 1990
                          select yr.YearID).Distinct().OrderByDescending(yr => yr);
 
             foreach (var yr in syear)
@@ -28,58 +30,53 @@ namespace SampleSelectionQueries
                 Console.WriteLine(yr);
             }
             Console.WriteLine();
+            Console.WriteLine();
 
             Console.WriteLine("Makes for Selected Year:");
-
             //Get Makes for Selected Year
-            var yrmake = (from mk in VCdb.VehicleConfigurations
-                          where mk.YearID == 2015
-                          select mk.MakeName).Distinct().OrderBy(mk => mk);
+            var yearmake = (from make in VCdb.Makes
+                            join bv in VCdb.BaseVehicles on make.MakeID equals bv.MakeID
+                            where bv.YearID == 2015
+                            select make).Distinct();
 
-            foreach (var mk in yrmake)
+            foreach (var make in yearmake)
             {
-                Console.WriteLine(mk);
+                Console.WriteLine(make.MakeName);
             }
+
+            Console.WriteLine();
             Console.WriteLine();
 
             Console.WriteLine("Models for Selected Year and Make:");
-
             //Get Models for Selected Year and Make
-            var yrmakemod = (from mkmod in VCdb.VehicleConfigurations
-                             where mkmod.YearID == 2015 && mkmod.MakeName == "Ford"
-                             select mkmod.ModelName).Distinct().OrderBy(mkmod => mkmod);
+            var yrmakemod = (from mak in VCdb.Makes
+                             join bvi in VCdb.BaseVehicles on mak.MakeID equals bvi.MakeID
+                             join mod in VCdb.Models on bvi.ModelID equals mod.ModelID
+                             where bvi.YearID == 2015 && mak.MakeName == "Ford"
+                             select mod).Distinct();
 
-            foreach (var mkmod in yrmakemod)
+            foreach (var mod in yrmakemod)
             {
-                Console.WriteLine(mkmod);
+                Console.WriteLine(mod.ModelName);
             }
+
+            Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("Engines for Selected Year, Make, and Model:");
+            Console.WriteLine("Distinct Year, Make, Model and BaseVehicleID:");
+            //Get BaseVehicleID for Selected Year, Make, and Model
+            var yrmakemodbvid = (from mak in VCdb.Makes
+                                 join bvi in VCdb.BaseVehicles on mak.MakeID equals bvi.MakeID
+                                 join mod in VCdb.Models on bvi.ModelID equals mod.ModelID
+                                 orderby mod.ModelName
+                                 where bvi.YearID == 2015 && mak.MakeName == "Ford" && mod.ModelName == "Fusion"
+                                 select new { bvi.YearID, mak.MakeName, mod.ModelName, bvi.BaseVehicleID }).Distinct();
 
-            //Get Engine for Selected Year, Make, and Model
-            var yrmakemodeng = (from mkmoden in VCdb.VehicleConfigurations
-                                where mkmoden.YearID == 2015 && mkmoden.MakeName == "Ford" && mkmoden.ModelName == "Fusion"
-                                select mkmoden.Liter).Distinct();
-
-            foreach (var mkmoden in yrmakemodeng)
+            foreach (var bvi in yrmakemodbvid)
             {
-                Console.WriteLine(mkmoden);
+                Console.WriteLine(bvi.YearID.ToString() + bvi.MakeName + bvi.ModelName + bvi.BaseVehicleID);
             }
-            Console.WriteLine();
 
-            Console.WriteLine("Distinct Year, Make, Model, Engine and BaseVehicleID:");
-
-            //Get BaseVehicleID for Selected Year, Make, Model and Engine 
-            var bvid = (from bv in VCdb.VehicleConfigurations
-                        where bv.YearID == 2015 && bv.MakeName == "Ford" && bv.ModelName == "Fusion" && bv.Liter == "2.0"
-                        select new { bv.YearID, bv.MakeName, bv.ModelName, bv.Liter, bv.BaseVehicleID }).Distinct();
-
-            foreach (var bv in bvid)
-            {
-                Console.WriteLine(bv.YearID.ToString() + bv.MakeName + bv.ModelName + bv.Liter + bv.BaseVehicleID);
-            }
-            Console.WriteLine();
 
             Console.ReadLine();
         }

@@ -59,12 +59,18 @@ namespace InspectlineAlpha.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
             Employee employee = Employee.GetEmpById(id, db);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName", "LastName", employee.EmployeeID);
 
             return View(employee);
         }
 
         // POST: Customer/EditEmployee/
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditEmployee([Bind(Include = "EmployeeID, LastName, FirstName, Title, BirthDate, HireDate, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -72,7 +78,9 @@ namespace InspectlineAlpha.Controllers
                 Employee.EditEmployee(employee, db);
                 return RedirectToAction("Index");
             }
+            ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName", "LastName", employee.EmployeeID);
             return View(employee);
+
         }
 
         // GET: Employee/Delete/

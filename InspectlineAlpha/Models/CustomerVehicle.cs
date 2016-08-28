@@ -18,14 +18,13 @@ namespace InspectlineAlpha.Models
             db.SubmitChanges();
         }
 
-
+        //This version uses Year, Make, Model.  Submodel, Liter, EngineBaseID reserved for next iteration.
         public static void EditCustVeh(CustomerVehicle custveh, InspectlineDataContext db)
         {
             var orgCustVeh = (from cv in db.CustomerVehicles
                               where cv.CustomerVehicleID == custveh.CustomerVehicleID
                               select cv).FirstOrDefault();
 
-            orgCustVeh.CustomerID = custveh.CustomerID;
             orgCustVeh.YearID = custveh.YearID;
             orgCustVeh.MakeName = custveh.MakeName;
             orgCustVeh.ModelName = custveh.ModelName;
