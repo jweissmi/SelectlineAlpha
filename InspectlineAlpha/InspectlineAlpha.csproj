@@ -267,6 +267,8 @@
     <Content Include="Views\CustomerVehicle\CustVehDetails.cshtml" />
     <Content Include="Views\CustomerVehicle\EditCustVeh.cshtml" />
     <Content Include="Views\Inspection\Index.cshtml" />
+    <Content Include="Views\Inspection\InspectionDetails.cshtml" />
+    <Content Include="Views\Inspection\CreateInspection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,97 +7,159 @@
 <h2>Inspectline Vehicle Inspection</h2>
 <section>
     <div class="col-md-4">
-        <h4>Customer</h4>
-        <p>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("CreateCustomer", "Customer")">New &raquo;</a>
-        </p>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Customer.FirstName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Customer.FirstName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Customer.LastName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Customer.LastName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Customer.CellPhone)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Customer.CellPhone)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Customer.Email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Customer.Email)
-            </dd>
-        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Customer</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Customer.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Customer.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Customer.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Customer.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Customer.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Customer.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Customer.CellPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Customer.CellPhone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Customer.CellPhone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Customer.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Customer.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        }
     </div>
 
     <div class="col-md-4">
-        <h4>Customer Vehicle</h4>
-        <p>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("CreateCustVeh", "CustomerVehicle")">New &raquo;</a>
-        </p>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CustVeh.YearID)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.CustVeh.YearID)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.CustVeh.MakeName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.CustVeh.MakeName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.CustVeh.ModelName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.CustVeh.ModelName)
-            </dd>
-        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Vehicle</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustVeh.YearID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustVeh.YearID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustVeh.YearID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustVeh.MakeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustVeh.MakeName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustVeh.MakeName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustVeh.ModelName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustVeh.ModelName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustVeh.ModelName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 
     <div class="col-md-4">
-        <h4>Shop</h4>
-        <p>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("CreateShop", "Shop")">New &raquo;</a>
-        </p>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Shop.ShopName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Shop.ShopName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Shop.ShopPhone)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Shop.ShopPhone)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Shop.ShopWebsite)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Shop.ShopWebsite)
-            </dd>
-        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Inspection Details</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inspection.InspectionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Inspection.InspectionDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Inspection.InspectionDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inspection.InspectionMileage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Inspection.InspectionMileage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Inspection.InspectionMileage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save Inspection" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @*<h4>Shop</h4>
+            <hr />*@
+        @*@using (Html.BeginForm())
+            {
+                <div class="form-horizontal">
+                    <h4>Shop</h4>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Shop, "Shop", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.DropDownList("ShopID", Model.Shops)
+                    </div>
+                </div>
+            }*@
+        @*<dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Shop.ShopName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Shop.ShopName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Shop.ShopPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Shop.ShopPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Shop.ShopWebsite)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Shop.ShopWebsite)
+                </dd>
+            </dl>*@
     </div>
+
 </section>
 
 <section>
@@ -121,22 +183,19 @@
 </section>
 
 <section>
-    <table>
-        <tr>
-            <td>Inspection Performed By:</td>
-            <td>___________________________________</td>
-            <td>Inspection Date:</td>
-            <td>___________________________________</td>
-        </tr>
-    </table>
-
     @using (Html.BeginForm())
     {
-        <div class="form-horizontal">
-            <h4>Employee</h4>
+        <div class="form-horizontal col-md-6">
             <hr />
             <div class="form-group">
-                @Html.LabelFor(model => model.Employee, "Employee", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Employee, "Inspection Performed By:", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("EmployeeID", Model.Employees)
+            </div>
+        </div>
+        <div class="form-horizontal col-md-6">
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Employee, "Inspection Date:", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("EmployeeID", Model.Employees)
             </div>
         </div>

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InspectlineAlpha.Models
 {
@@ -58,6 +59,21 @@ namespace InspectlineAlpha.Models
             db.Customers.DeleteOnSubmit(customer);
             db.SubmitChanges();
         }
+
+        public static SelectList GetVehicles(InspectlineDataContext db)
+        {
+            var vehicles = (from i in db.CustomerVehicles
+                             select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerVehicleID.ToString(),
+                                    Text = x.YearID + " " + x.MakeName + " " + x.ModelName
+                                });
+
+            return new SelectList(vehicles, "Value", "Text");
+        }
+
     }
     public class CustomerMetaData
     {

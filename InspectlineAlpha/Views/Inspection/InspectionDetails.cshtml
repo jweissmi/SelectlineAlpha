@@ -1,0 +1,74 @@
+﻿@model InspectlineAlpha.Models.Inspection
+
+@{
+    ViewBag.Title = "InspectionDetails";
+}
+
+<h2>InspectionDetails</h2>
+
+<div>
+    <h4>Inspection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShopID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShopID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerVehicleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerVehicleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InspectionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InspectionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InspectionMileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InspectionMileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InspectionResultID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InspectionResultID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InspectionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

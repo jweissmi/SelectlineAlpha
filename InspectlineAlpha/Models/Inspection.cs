@@ -9,8 +9,11 @@ using System.Web.Mvc;
 
 namespace InspectlineAlpha.Models
 {
+    [MetadataType(typeof(InspectionMetaData))]
+
     public partial class Inspection
     {
+
         public static void CreateInspection(Inspection inspection, InspectlineDataContext db)
         {
             db.Inspections.InsertOnSubmit(inspection);
@@ -37,6 +40,20 @@ namespace InspectlineAlpha.Models
                                      select i).FirstOrDefault();
 
             return inspection;
+        }
+
+        public static SelectList GetCustomers(InspectlineDataContext db)
+        {
+            var customers = (from i in db.Customers
+                             select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerID.ToString(),
+                                    Text = x.FirstName + " " + x.LastName
+                                });
+
+            return new SelectList(customers, "Value", "Text");
         }
 
         public static SelectList GetEmployees(InspectlineDataContext db)
@@ -76,6 +93,14 @@ namespace InspectlineAlpha.Models
             db.Inspections.DeleteOnSubmit(inspection);
             db.SubmitChanges();
         }
+    }
 
+    public class InspectionMetaData
+    {
+        [DisplayName("Date")]
+        public string InspectionDate { get; set; }
+
+        [DisplayName("Mileage")]
+        public string InspectionMileage { get; set; }
     }
 }

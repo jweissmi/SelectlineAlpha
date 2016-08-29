@@ -12,6 +12,7 @@ namespace InspectlineAlpha.ViewModel
     public class InspectionViewModel
     {
 
+        public Inspection Inspection { get; set; }
         public Customer Customer { get; set; }
         public Employee Employee { get; set; }
         public CustomerVehicle CustVeh { get; set; }
@@ -22,6 +23,7 @@ namespace InspectlineAlpha.ViewModel
 
         public InspectionViewModel(Inspection inspection)
         {
+            Inspection = Inspection;
             Customer = Customer;
             Employee = Employee;
             CustVeh = CustVeh;
@@ -30,6 +32,7 @@ namespace InspectlineAlpha.ViewModel
 
         public InspectionViewModel()
         {
+            Inspection = Inspection;
             Customer = Customer;
             Employee = Employee;
             CustVeh = CustVeh;
