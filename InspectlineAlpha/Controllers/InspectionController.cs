@@ -1,4 +1,5 @@
 ﻿using InspectlineAlpha.Models;
+using InspectlineAlpha.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,19 @@ namespace InspectlineAlpha.Controllers
         // GET: Inspection
         public ActionResult Index()
         {
-            return View();
+            InspectionViewModel model = new InspectionViewModel();
+            model.Employees = Inspection.GetEmployees(db);
+            model.Shop = Inspection.GetShop(db);
+
+            return View(model);
         }
 
         public ActionResult StartInspection()
         {
-            return View();
+            InspectionViewModel model = new InspectionViewModel();
+            model.Employees = Inspection.GetEmployees(db);
+
+            return View(model);
         }
     }
 }

@@ -10,7 +10,7 @@
         <h4>Customer</h4>
         <p>
             <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("CreateCustomer", "Customer")">New &raquo;</a>
         </p>
         <hr />
         <dl class="dl-horizontal">
@@ -45,7 +45,7 @@
         <h4>Customer Vehicle</h4>
         <p>
             <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("CreateCustVeh", "CustomerVehicle")">New &raquo;</a>
         </p>
         <hr />
         <dl class="dl-horizontal">
@@ -74,7 +74,7 @@
         <h4>Shop</h4>
         <p>
             <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">Select &raquo;</a>
-            <a class="btn btn-default" href="@Url.Action("Index", "Inspection")">New &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("CreateShop", "Shop")">New &raquo;</a>
         </p>
         <hr />
         <dl class="dl-horizontal">
@@ -130,36 +130,15 @@
         </tr>
     </table>
 
-    @*George, can you get an Employee DropDownList to work here?*@  
-
-    @*@using (Html.BeginForm())
+    @using (Html.BeginForm())
     {
-        @Html.AntiForgeryToken()
-
         <div class="form-horizontal">
-            <h4>Product</h4>
+            <h4>Employee</h4>
             <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Employee)
-
             <div class="form-group">
-                @Html.LabelFor(model => model.Employee, "EmployeeID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("EmployeeID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Employee, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+                @Html.LabelFor(model => model.Employee, "Employee", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownList("EmployeeID", Model.Employees)
             </div>
         </div>
-    }*@
-
+    }
 </section>
-
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
