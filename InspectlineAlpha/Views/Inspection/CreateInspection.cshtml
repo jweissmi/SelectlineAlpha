@@ -4,14 +4,20 @@
     ViewBag.Title = "CreateInspection";
 }
 
-<h2>CreateInspection</h2>
+<h2>Inspection</h2>
+<div class="form-group pull-left">
+    <div>
+        <input type="submit" value="Save Results" class="btn btn-default" />
+    </div>
+</div>
+
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Inspection View Model</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -125,16 +131,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-
         </div>
     </div>
 }
@@ -145,7 +141,15 @@
     </h3>
     <div class="col-md-6">
         <table class="table">
-            <tr>
+            <tr align="center">
+                <td></td>
+                <td>7 mm <br />or greater</td>
+                <td>6 mm <br />4 mm</td>
+                <td>3 mm <br />or less</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr align="center">
                 <td><h4>Left Front</h4></td>
                 <td>
                     <div class="checkboxOne">
@@ -174,24 +178,24 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr align="center">
                 <td><h4>Left Rear</h4></td>
                 <td>
-                    <div class="checkboxOne">
-                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
-                        <label for="checkboxOneInput"></label>
+                    <div class="checkboxFour">
+                        <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                        <label for="checkboxFourInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxTwo">
-                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
-                        <label for="checkboxTwoInput"></label>
+                    <div class="checkboxFive">
+                        <input type="checkbox" value="1" id="checkboxFiveInput" name="" />
+                        <label for="checkboxFiveInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxThree">
-                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
-                        <label for="checkboxThreeInput"></label>
+                    <div class="checkboxSix">
+                        <input type="checkbox" value="1" id="checkboxSixInput" name="" />
+                        <label for="checkboxSixInput"></label>
                     </div>
                 </td>
                 <td></td>
@@ -208,24 +212,32 @@
 
     <div class="col-md-6">
         <table class="table">
-            <tr>
+            <tr align="center">
+                <td></td>
+                <td>7 mm <br />or greater</td>
+                <td>6 mm <br />4 mm</td>
+                <td>3 mm <br />or less</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr align="center">
                 <td><h4>Right Front</h4></td>
                 <td>
-                    <div class="checkboxOne">
-                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
-                        <label for="checkboxOneInput"></label>
+                    <div class="checkboxSeven">
+                        <input type="checkbox" value="1" id="checkboxSevenInput" name="" />
+                        <label for="checkboxSevenInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxTwo">
-                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
-                        <label for="checkboxTwoInput"></label>
+                    <div class="checkboxEight">
+                        <input type="checkbox" value="1" id="checkboxEightInput" name="" />
+                        <label for="checkboxEightInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxThree">
-                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
-                        <label for="checkboxThreeInput"></label>
+                    <div class="checkboxNine">
+                        <input type="checkbox" value="1" id="checkboxNineInput" name="" />
+                        <label for="checkboxNineInput"></label>
                     </div>
                 </td>
                 <td></td>
@@ -237,24 +249,24 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr align="center">
                 <td><h4>Right Rear</h4></td>
                 <td>
-                    <div class="checkboxOne">
-                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
-                        <label for="checkboxOneInput"></label>
+                    <div class="checkboxTen">
+                        <input type="checkbox" value="1" id="checkboxTenInput" name="" />
+                        <label for="checkboxTenInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxTwo">
-                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
-                        <label for="checkboxTwoInput"></label>
+                    <div class="checkboxEleven">
+                        <input type="checkbox" value="1" id="checkboxElevenInput" name="" />
+                        <label for="checkboxElevenInput"></label>
                     </div>
                 </td>
                 <td>
-                    <div class="checkboxThree">
-                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
-                        <label for="checkboxThreeInput"></label>
+                    <div class="checkboxTwelve">
+                        <input type="checkbox" value="1" id="checkboxTwelveInput" name="" />
+                        <label for="checkboxTwelveInput"></label>
                     </div>
                 </td>
                 <td></td>
@@ -268,6 +280,7 @@
             </tr>
         </table>
     </div>
+    <br />
     <div>
         @Html.TextArea("myTextArea", "Comments", new { @class = "form-control" })
     </div>
