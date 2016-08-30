@@ -1,0 +1,187 @@
+﻿input:checked {
+    height: 50px;
+    width: 50px;
+}
+
+
+/**
+ * Checkbox One
+ */
+.checkboxOne {
+width: 40px;
+height: 40px;
+background: #ddd;
+margin: 10px 10px;
+border-radius: 100%;
+position: relative;
+-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checkbox button
+ */
+.checkboxOne label {
+display: block;
+width: 30px;
+height: 30px;
+border-radius: 100px;
+-webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+cursor: pointer;
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 1;
+background: #333;
+-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checked state
+ */
+.checkboxOne input[type=checkbox]:checked + label {
+background: #26ca28;
+}
+
+/**
+ * Checkbox Two
+ */
+.checkboxTwo {
+width: 40px;
+height: 40px;
+background: #ddd;
+margin: 10px 10px;
+border-radius: 100%;
+position: relative;
+-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checkbox button
+ */
+.checkboxTwo label {
+display: block;
+width: 30px;
+height: 30px;
+border-radius: 100px;
+-webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+cursor: pointer;
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 1;
+background: #333;
+-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checked state
+ */
+.checkboxTwo input[type=checkbox]:checked + label {
+background: #ffd800;
+}
+
+/**
+ * Checkbox Three
+ */
+.checkboxThree {
+width: 40px;
+height: 40px;
+background: #ddd;
+margin: 10px 10px;
+border-radius: 100%;
+position: relative;
+-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checkbox button
+ */
+.checkboxThree label {
+display: block;
+width: 30px;
+height: 30px;
+border-radius: 100px;
+-webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+cursor: pointer;
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 1;
+background: #333;
+-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checked state
+ */
+.checkboxThree input[type=checkbox]:checked + label {
+background: #ff0000;
+}
+
+
+
+/**
+ * Checkbox Four
+ */
+.checkboxFour {
+width: 40px;
+height: 40px;
+background: #ddd;
+margin: 10px 10px;
+border-radius: 100%;
+position: relative;
+-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checkbox button
+ */
+.checkboxFour label {
+display: block;
+width: 30px;
+height: 30px;
+border-radius: 100px;
+-webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+cursor: pointer;
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 1;
+background: #333;
+-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * Create the checked state
+ */
+.checkboxFour input[type=checkbox]:checked + label {
+background: #333;
+}

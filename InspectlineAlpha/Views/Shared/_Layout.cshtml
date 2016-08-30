@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - Inspectline</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/selection-elements.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("Content", false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

@@ -130,10 +130,148 @@
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<section>
+    <h3>
+        Check Brakes - Measure Front and Rear Linings
+    </h3>
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <td><h4>Left Front</h4></td>
+                <td>
+                    <div class="checkboxOne">
+                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
+                        <label for="checkboxOneInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwo">
+                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
+                        <label for="checkboxTwoInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxThree">
+                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                        <label for="checkboxThreeInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><h4>Left Rear</h4></td>
+                <td>
+                    <div class="checkboxOne">
+                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
+                        <label for="checkboxOneInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwo">
+                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
+                        <label for="checkboxTwoInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxThree">
+                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                        <label for="checkboxThreeInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <td><h4>Right Front</h4></td>
+                <td>
+                    <div class="checkboxOne">
+                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
+                        <label for="checkboxOneInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwo">
+                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
+                        <label for="checkboxTwoInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxThree">
+                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                        <label for="checkboxThreeInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><h4>Right Rear</h4></td>
+                <td>
+                    <div class="checkboxOne">
+                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
+                        <label for="checkboxOneInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwo">
+                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
+                        <label for="checkboxTwoInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxThree">
+                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                        <label for="checkboxThreeInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        @Html.TextArea("myTextArea", "Comments", new { @class = "form-control" })
+    </div>
+    <br />
+    <br />
+    <br />
+</section>

@@ -20,8 +20,10 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 600px;
 }
+
+
 
 .navbar-default {
   background-color: #f8f8f8;
