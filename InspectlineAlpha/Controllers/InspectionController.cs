@@ -3,9 +3,12 @@ using InspectlineAlpha.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.Entity;
+using System.Net;
+using System.Data.Entity.Core.Objects;
 
 namespace InspectlineAlpha.Controllers
 {
@@ -14,11 +17,20 @@ namespace InspectlineAlpha.Controllers
         private InspectlineDataContext db = new InspectlineDataContext();
 
         // GET: Inspection
+        public ActionResult IndexSAVE()
+        {
+            return View(db.Inspections.ToList());
+        }
+
+        // GET: Inspection
         public ActionResult Index()
         {
             InspectionViewModel model = new InspectionViewModel();
+            
+            model.Customers = Inspection.GetCustomers(db);
+            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
             model.Employees = Inspection.GetEmployees(db);
-            model.Shops = Inspection.GetShops(db);
+            model.Shops = Inspection.GetCustomerVehicle(db);
 
             return View(model);
         }
@@ -26,7 +38,10 @@ namespace InspectlineAlpha.Controllers
         public ActionResult StartInspection()
         {
             InspectionViewModel model = new InspectionViewModel();
+            model.Customers = Inspection.GetCustomers(db);
+            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
             model.Employees = Inspection.GetEmployees(db);
+            model.Shops = Inspection.GetCustomerVehicle(db);
 
             return View(model);
         }
@@ -47,8 +62,9 @@ namespace InspectlineAlpha.Controllers
         {
             InspectionViewModel model = new InspectionViewModel();
             model.Customers = Inspection.GetCustomers(db);
-            model.Shops = Inspection.GetShops(db);
+            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
             model.Employees = Inspection.GetEmployees(db);
+            model.Shops = Inspection.GetCustomerVehicle(db);
 
             return View(model);
         }

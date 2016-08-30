@@ -56,6 +56,20 @@ namespace InspectlineAlpha.Models
             return new SelectList(customers, "Value", "Text");
         }
 
+        public static SelectList GetCustomerVehicle(InspectlineDataContext db)
+        {
+            var customervehicles = (from i in db.CustomerVehicles
+                             select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerVehicleID.ToString(),
+                                    Text = x.YearID + " " + x.MakeName + " " + x.ModelName
+                                });
+
+            return new SelectList(customervehicles, "Value", "Text");
+        }
+
         public static SelectList GetEmployees(InspectlineDataContext db)
         {
             var employees = (from i in db.Employees
@@ -70,19 +84,19 @@ namespace InspectlineAlpha.Models
             return new SelectList(employees, "Value", "Text");
         }
 
-        public static SelectList GetShops(InspectlineDataContext db)
-        {
-            var shops = (from i in db.Shops
-                             select i)
-                        .Select(x =>
-                                new SelectListItem
-                                {
-                                    Value = x.ShopID.ToString(),
-                                    Text = x.ShopName + " " + x.ShopPhone
-                                });
+        //public static SelectList GetCustomerVehicle(InspectlineDataContext db)
+        //{
+        //    var shops = (from i in db.Shops
+        //                     select i)
+        //                .Select(x =>
+        //                        new SelectListItem
+        //                        {
+        //                            Value = x.ShopID.ToString(),
+        //                            Text = x.ShopName + " " + x.ShopPhone
+        //                        });
 
-            return new SelectList(shops, "Value", "Text");
-        }
+        //    return new SelectList(shops, "Value", "Text");
+        //}
 
         public static void DeleteInspectionById(int? id, InspectlineDataContext db)
         {

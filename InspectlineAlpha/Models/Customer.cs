@@ -20,6 +20,12 @@ namespace InspectlineAlpha.Models
             db.SubmitChanges();
         }
 
+        public static void IndexSample(Customer customer, InspectlineDataContext db)
+        {
+            db.Customers.InsertOnSubmit(customer);
+            db.SubmitChanges();
+        }
+
         public static void EditCustomer(Customer customer, InspectlineDataContext db)
         {
             var orgCustomer = (from c in db.Customers
@@ -48,6 +54,34 @@ namespace InspectlineAlpha.Models
                                  select c).FirstOrDefault();
 
             return customer;
+        }
+
+        public static SelectList GetCustomers(InspectlineDataContext db)
+        {
+            var customers = (from i in db.Customers
+                             select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerID.ToString(),
+                                    Text = x.FirstName + " " + x.LastName
+                                });
+
+            return new SelectList(customers, "Value", "Text");
+        }
+
+        public static SelectList GetCustomerVehicle(InspectlineDataContext db)
+        {
+            var customervehicles = (from i in db.CustomerVehicles
+                                    select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerVehicleID.ToString(),
+                                    Text = x.YearID + " " + x.MakeName + " " + x.ModelName
+                                });
+
+            return new SelectList(customervehicles, "Value", "Text");
         }
 
         public static void DeleteCustById(int? id, InspectlineDataContext db)

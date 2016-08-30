@@ -4,6 +4,21 @@
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
+<div>
+    @Html.DropDownList("CustomerID", Model.Customers, "--select--")
+    <input id="CustomerName" type="text" />
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("[name='CustomerID']").change(function () {
+            $("#CustomerName").val($(this).val());
+        });
+    });
+</script>
+
+
 <h2>Inspectline Vehicle Inspection</h2>
 <section>
     <div class="col-md-4">
@@ -61,26 +76,26 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CustVeh.YearID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CustomerVehicle.YearID, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.CustVeh.YearID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CustVeh.YearID, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CustomerVehicle.YearID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustomerVehicle.YearID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CustVeh.MakeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CustomerVehicle.MakeName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.CustVeh.MakeName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CustVeh.MakeName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CustomerVehicle.MakeName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustomerVehicle.MakeName, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CustVeh.ModelName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CustomerVehicle.ModelName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.CustVeh.ModelName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CustVeh.ModelName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CustomerVehicle.ModelName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CustomerVehicle.ModelName, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -112,55 +127,141 @@
                     </div>
                 </div>
 
-                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Employee.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Employee.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Employee.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Employee.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Employee.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Employee.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.Employee, "Inspection Performed By:", htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("EmployeeID", Model.Employees, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Employees, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
                 <br />
                 <br />
                 <br />
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2">
                         <input type="submit" value="Save Inspection" class="btn btn-default" />
                     </div>
                 </div>
             </div>
         }
 
-
-        @*<h4>Shop</h4>
-            <hr />*@
-        @*@using (Html.BeginForm())
-            {
-                <div class="form-horizontal">
-                    <h4>Shop</h4>
-                    <hr />
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Shop, "Shop", htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.DropDownList("ShopID", Model.Shops)
-                    </div>
-                </div>
-            }*@
-        @*<dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Shop.ShopName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Shop.ShopName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Shop.ShopPhone)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Shop.ShopPhone)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Shop.ShopWebsite)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Shop.ShopWebsite)
-                </dd>
-            </dl>*@
     </div>
-
 </section>
+
+<section>
+    <!-- Single button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Inspection Performed By<span class="caret"></span>
+        </button>
+       
+        @*<ul class="dropdown-menu">
+            <li></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>*@
+    </div>
+</section>
+
+<div class="bs-example" data-example-id="split-button-dropdown">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">Default</button>
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div> <div class="btn-group">
+        <button type="button" class="btn btn-primary">Primary</button>
+               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
+               </button> <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button> <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button> <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button> <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button> <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+    </div>
+</div>
 
 <section>
     <table>
@@ -180,24 +281,4 @@
     <br />
     <br />
     <br />
-</section>
-
-<section>
-    @using (Html.BeginForm())
-    {
-        <div class="form-horizontal col-md-6">
-            <hr />
-            <div class="form-group">
-                @Html.LabelFor(model => model.Employee, "Inspection Performed By:", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("EmployeeID", Model.Employees)
-            </div>
-        </div>
-        <div class="form-horizontal col-md-6">
-            <hr />
-            <div class="form-group">
-                @Html.LabelFor(model => model.Employee, "Inspection Date:", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("EmployeeID", Model.Employees)
-            </div>
-        </div>
-    }
 </section>

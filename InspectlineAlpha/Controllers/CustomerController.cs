@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Net;
 using System.Data.Entity.Core.Objects;
+using InspectlineAlpha.ViewModel;
 
 namespace InspectlineAlpha.Controllers
 {
@@ -20,6 +21,30 @@ namespace InspectlineAlpha.Controllers
         {
             return View(db.Customers.ToList());
         }
+
+        public ActionResult IndexSample()
+        {
+            CustomerViewModel model = new CustomerViewModel();
+            model.Customers = Customer.GetCustomers(db);
+            model.CustomerVehicles = Customer.GetCustomerVehicle(db);
+
+            return View(model);
+        }
+
+        // POST: Customer/CreateCustomer/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IndexSample([Bind(Include = "FirstName, LastName, Title, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email, YearID, MakeName, ModelName")] Customer customer, CustomerVehicle custveh)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer.CreateCustomer(customer, db);
+                CustomerVehicle.CreateCustVeh(custveh, db);
+                return RedirectToAction("Index");
+            }
+            return View(customer);
+        }
+
 
         // GET: Customer/CustomerDetails/
         public ActionResult CustomerDetails(int? id)

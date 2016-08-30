@@ -3,16 +3,48 @@
   <Table Name="dbo.Inspection" Member="Inspections">
     <Type Name="Inspection">
       <Column Name="InspectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ShopID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InspectionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="InspectionMileage" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InspectionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InspectionMileage" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="InspectionResultID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Customer_Inspection" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
       <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />
       <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
-      <Association Name="Customer_Inspection" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customers" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CellPhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(320)" CanBeNull="true" />
+      <Association Name="Customer_Inspection" Member="Inspections" ThisKey="CustomerID" OtherKey="CustomerID" Type="Inspection" />
+      <Association Name="CustomerVehicle_Customer" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
+    <Type Name="CustomerVehicle">
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerVehicle_Customer" Member="Customers" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Customer" />
     </Type>
   </Table>
   <Table Name="dbo.Shop" Member="Shops">
@@ -48,38 +80,6 @@
       <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(320)" CanBeNull="true" />
       <Association Name="Employee_Inspection" Member="Inspections" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Inspection" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Customers" Member="Customers">
-    <Type Name="Customer">
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="CellPhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
-      <Column Name="HomePhone" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(320)" CanBeNull="true" />
-      <Association Name="Customer_Inspection" Member="Inspections" ThisKey="CustomerID" OtherKey="CustomerID" Type="Inspection" />
-      <Association Name="CustomerVehicle_Customer" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
-    <Type Name="CustomerVehicle">
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CustomerVehicle_Customer" Member="Customers" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Customer" />
     </Type>
   </Table>
 </Database>

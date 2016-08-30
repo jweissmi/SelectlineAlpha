@@ -14,11 +14,13 @@ namespace InspectlineAlpha.ViewModel
 
         public Inspection Inspection { get; set; }
         public Customer Customer { get; set; }
+        public CustomerVehicle CustomerVehicle { get; set; }
         public Employee Employee { get; set; }
-        public CustomerVehicle CustVeh { get; set; }
         public Shop Shop { get; set; }
-        public SelectList Employees { get; set; }
+       
         public SelectList Customers { get; set; }
+        public SelectList CustomerVehicles { get; set; }
+        public SelectList Employees { get; set; }
         public SelectList Shops { get; set; }
 
         public InspectionViewModel(Inspection inspection)
@@ -26,7 +28,7 @@ namespace InspectlineAlpha.ViewModel
             Inspection = Inspection;
             Customer = Customer;
             Employee = Employee;
-            CustVeh = CustVeh;
+            CustomerVehicle = CustomerVehicle;
             Shop = Shop;
         }
 
@@ -35,7 +37,7 @@ namespace InspectlineAlpha.ViewModel
             Inspection = Inspection;
             Customer = Customer;
             Employee = Employee;
-            CustVeh = CustVeh;
+            CustomerVehicle = CustomerVehicle;
             Shop = Shop;
         }
     }

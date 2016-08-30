@@ -1,0 +1,69 @@
+﻿@model IEnumerable<InspectlineAlpha.Models.Inspection>
+
+@{
+    ViewBag.Title = "IndexSAVE";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateInspection")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CustomerVehicle)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerVehicleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectionMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectionResultID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CustomerVehicle)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerVehicleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionMileage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionResultID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InspectionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InspectionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InspectionID })
+        </td>
+    </tr>
+}
+
+</table>
