@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InspectlineAlpha.Models
 {
@@ -12,9 +13,9 @@ namespace InspectlineAlpha.Models
 
     public partial class CustomerVehicle
     {
-        public static void CreateCustVeh(CustomerVehicle custveh, InspectlineDataContext db)
+        public static void CreateCustVeh(CustomerVehicle customervehicle, InspectlineDataContext db)
         {
-            db.CustomerVehicles.InsertOnSubmit(custveh);
+            db.CustomerVehicles.InsertOnSubmit(customervehicle);
             db.SubmitChanges();
         }
 
@@ -25,6 +26,7 @@ namespace InspectlineAlpha.Models
                               where cv.CustomerVehicleID == custveh.CustomerVehicleID
                               select cv).FirstOrDefault();
 
+            orgCustVeh.CustomerID = custveh.CustomerID;
             orgCustVeh.YearID = custveh.YearID;
             orgCustVeh.MakeName = custveh.MakeName;
             orgCustVeh.ModelName = custveh.ModelName;
@@ -42,6 +44,20 @@ namespace InspectlineAlpha.Models
                                        select cv).FirstOrDefault();
 
             return custveh;
+        }
+
+        public static SelectList GetCustomers(InspectlineDataContext db)
+        {
+            var customers = (from i in db.Customers
+                             select i)
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.CustomerID.ToString(),
+                                    Text = x.FirstName + " " + x.LastName
+                                });
+
+            return new SelectList(customers, "Value", "Text");
         }
 
         public static void DeleteCustVehById(int? id, InspectlineDataContext db)

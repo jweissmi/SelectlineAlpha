@@ -10,7 +10,7 @@ namespace InspectlineAlpha.ViewModel
     public class CustomerViewModel
     {
         public Customer Customer { get; set; }
-        public CustomerVehicle CustVeh { get; set; }
+        public CustomerVehicle CustomerVehicle { get; set; }
 
         public SelectList Customers { get; set; }
         public SelectList CustomerVehicles { get; set; }
@@ -18,14 +18,16 @@ namespace InspectlineAlpha.ViewModel
         public CustomerViewModel(Customer customer)
         {
             Customer = Customer;
-            CustVeh = CustVeh;
+            Customers = Customers;
+            CustomerVehicle = CustomerVehicle;
             CustomerVehicles = CustomerVehicles;
         }
 
         public CustomerViewModel()
         {
             Customer = Customer;
-            CustVeh = CustVeh;
+            Customers = Customers;
+            CustomerVehicle = CustomerVehicle;
             CustomerVehicles = CustomerVehicles;
         }
     }

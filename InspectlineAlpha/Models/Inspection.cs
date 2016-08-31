@@ -59,7 +59,7 @@ namespace InspectlineAlpha.Models
         public static SelectList GetCustomerVehicle(InspectlineDataContext db)
         {
             var customervehicles = (from i in db.CustomerVehicles
-                             select i)
+                                    select i)
                         .Select(x =>
                                 new SelectListItem
                                 {
@@ -83,20 +83,6 @@ namespace InspectlineAlpha.Models
 
             return new SelectList(employees, "Value", "Text");
         }
-
-        //public static SelectList GetCustomerVehicle(InspectlineDataContext db)
-        //{
-        //    var shops = (from i in db.Shops
-        //                     select i)
-        //                .Select(x =>
-        //                        new SelectListItem
-        //                        {
-        //                            Value = x.ShopID.ToString(),
-        //                            Text = x.ShopName + " " + x.ShopPhone
-        //                        });
-
-        //    return new SelectList(shops, "Value", "Text");
-        //}
 
         public static void DeleteInspectionById(int? id, InspectlineDataContext db)
         {

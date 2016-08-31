@@ -17,33 +17,9 @@ namespace InspectlineAlpha.Controllers
         private InspectlineDataContext db = new InspectlineDataContext();
 
         // GET: Inspection
-        public ActionResult IndexSAVE()
-        {
-            return View(db.Inspections.ToList());
-        }
-
-        // GET: Inspection
         public ActionResult Index()
         {
-            InspectionViewModel model = new InspectionViewModel();
-            
-            model.Customers = Inspection.GetCustomers(db);
-            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
-            model.Employees = Inspection.GetEmployees(db);
-            model.Shops = Inspection.GetCustomerVehicle(db);
-
-            return View(model);
-        }
-
-        public ActionResult StartInspection()
-        {
-            InspectionViewModel model = new InspectionViewModel();
-            model.Customers = Inspection.GetCustomers(db);
-            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
-            model.Employees = Inspection.GetEmployees(db);
-            model.Shops = Inspection.GetCustomerVehicle(db);
-
-            return View(model);
+            return View(db.Inspections.ToList());
         }
 
         // GET: Inspection/InspectionDetails/
@@ -62,7 +38,7 @@ namespace InspectlineAlpha.Controllers
         {
             InspectionViewModel model = new InspectionViewModel();
             model.Customers = Inspection.GetCustomers(db);
-            //model.CustomerVehicle = Inspection.GetCustomerVehicle(db);
+            model.CustomerVehicles = Inspection.GetCustomerVehicle(db);
             model.Employees = Inspection.GetEmployees(db);
             model.Shops = Inspection.GetCustomerVehicle(db);
 

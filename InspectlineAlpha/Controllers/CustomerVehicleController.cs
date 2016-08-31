@@ -1,4 +1,5 @@
 ﻿using InspectlineAlpha.Models;
+using InspectlineAlpha.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,20 +33,23 @@ namespace InspectlineAlpha.Controllers
         // GET: CustomerVehicle/CreateCustVeh
         public ActionResult CreateCustVeh()
         {
-            return View();
+            CustomerViewModel model = new CustomerViewModel();
+            model.Customers = Customer.GetCustomers(db);
+            
+            return View(model);
         }
 
         // POST: CustomerVehicle/CreateCustVeh
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCustVeh([Bind(Include = "YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
+        public ActionResult CreateCustVeh([Bind(Include = "CustomerID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle customervehicle)
         {
             if (ModelState.IsValid)
             {
-                CustomerVehicle.CreateCustVeh(custveh, db);
+                CustomerVehicle.CreateCustVeh(customervehicle, db);
                 return RedirectToAction("Index");
             }
-            return View(custveh);
+            return View(customervehicle);
         }
 
         // GET: CustomerVehicle/EditCustVeh/
@@ -54,21 +58,21 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            CustomerVehicle custveh = CustomerVehicle.GetCustVehById(id, db);
+            CustomerVehicle customervehicle = CustomerVehicle.GetCustVehById(id, db);
 
-            return View(custveh);
+            return View(customervehicle);
         }
 
         // POST: CustomerVehicle/EditCustVeh/
         [HttpPost]
-        public ActionResult EditCustVeh([Bind(Include = "CustomerVehicleID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle custveh)
+        public ActionResult EditCustVeh([Bind(Include = "CustomerVehicleID, CustomerID, YearID, MakeName, ModelName, SubmodelName, Liter, BaseVehicleID, EngineBaseID")] CustomerVehicle customervehicle)
         {
             if (ModelState.IsValid)
             {
-                CustomerVehicle.EditCustVeh(custveh, db);
+                CustomerVehicle.EditCustVeh(customervehicle, db);
                 return RedirectToAction("Index");
             }
-            return View(custveh);
+            return View(customervehicle);
         }
 
         // GET: CustomerVehicle/DeleteCustVeh/
@@ -77,9 +81,9 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            CustomerVehicle custveh = CustomerVehicle.GetCustVehById(id, db);
+            CustomerVehicle customervehicle = CustomerVehicle.GetCustVehById(id, db);
 
-            return View(custveh);
+            return View(customervehicle);
         }
 
         // POST: CustomerVehicle/DeleteCustVeh/

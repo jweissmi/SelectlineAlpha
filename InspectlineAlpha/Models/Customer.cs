@@ -34,7 +34,6 @@ namespace InspectlineAlpha.Models
 
             orgCustomer.FirstName = customer.FirstName;
             orgCustomer.LastName = customer.LastName;
-            orgCustomer.CustomerVehicleID = customer.CustomerID;
             orgCustomer.Title = customer.Title;
             orgCustomer.Address = customer.Address;
             orgCustomer.City = customer.City;
@@ -97,7 +96,7 @@ namespace InspectlineAlpha.Models
         public static SelectList GetVehicles(InspectlineDataContext db)
         {
             var vehicles = (from i in db.CustomerVehicles
-                             select i)
+                            select i)
                         .Select(x =>
                                 new SelectListItem
                                 {
