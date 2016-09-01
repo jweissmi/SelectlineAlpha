@@ -13,6 +13,14 @@ namespace InspectlineAlpha.Models
 
     public partial class Customer
     {
+        [DisplayName("Name")]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         public static void CreateCustomer(Customer customer, InspectlineDataContext db)
         {
@@ -110,6 +118,7 @@ namespace InspectlineAlpha.Models
     }
     public class CustomerMetaData
     {
+
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
