@@ -25,6 +25,7 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
+            Customer customer = Customer.GetCustById(id, db);
             CustomerVehicle custveh = CustomerVehicle.GetCustVehById(id, db);
 
             return View(custveh);

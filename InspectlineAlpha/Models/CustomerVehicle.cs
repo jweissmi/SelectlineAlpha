@@ -13,6 +13,16 @@ namespace InspectlineAlpha.Models
 
     public partial class CustomerVehicle
     {
+        [DisplayName("Name")]
+        public string FullName
+        {
+            get
+            {
+
+                return Customer.FirstName + " " + Customer.LastName;
+            }
+        }
+
         public static void CreateCustVeh(CustomerVehicle customervehicle, InspectlineDataContext db)
         {
             db.CustomerVehicles.InsertOnSubmit(customervehicle);
