@@ -28,12 +28,6 @@ namespace InspectlineAlpha.Models
             db.SubmitChanges();
         }
 
-        public static void IndexSample(Customer customer, InspectlineDataContext db)
-        {
-            db.Customers.InsertOnSubmit(customer);
-            db.SubmitChanges();
-        }
-
         public static void EditCustomer(Customer customer, InspectlineDataContext db)
         {
             var orgCustomer = (from c in db.Customers

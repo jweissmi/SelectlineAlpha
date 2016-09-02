@@ -12,6 +12,15 @@ namespace InspectlineAlpha.Models
 
     public partial class Employee
     {
+        [DisplayName("Name")]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
         public static void CreateEmployee(Employee employee, InspectlineDataContext db)
         {
             db.Employees.InsertOnSubmit(employee);

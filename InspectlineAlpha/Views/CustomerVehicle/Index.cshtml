@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<InspectlineAlpha.Models.CustomerVehicle>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CustomerVehicleIndex";
 }
 
-<h2>Index</h2>
+<h2>Vehicles</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateCustVeh")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.YearID)

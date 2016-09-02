@@ -1,21 +1,18 @@
 ﻿@model IEnumerable<InspectlineAlpha.Models.Shop>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShopIndex";
 }
 
-<h2>Index</h2>
+<h2>Shops</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateShop")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ShopName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddedOnDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -24,22 +21,7 @@
             @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ShopPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShopEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShopWebsite)
         </th>
         <th></th>
     </tr>
@@ -50,31 +32,13 @@
             @Html.DisplayFor(modelItem => item.ShopName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AddedOnDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.City)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ShopPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShopEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShopWebsite)
         </td>
         <td>
             @Html.ActionLink("Edit", "EditShop", new { id=item.ShopID }) |
