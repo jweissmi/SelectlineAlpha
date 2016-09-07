@@ -4,18 +4,32 @@
     ViewBag.Title = "EditCustVeh";
 }
 
-<h2>EditCustVeh</h2>
+<h2>Edit Customer Vehicle</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+        </dl>
+    </div>
+
     <div class="form-horizontal">
-        <h4>CustomerVehicle</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CustomerVehicleID)
+        @Html.HiddenFor(model => model.CustomerID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.YearID, htmlAttributes: new { @class = "control-label col-md-2" })

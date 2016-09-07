@@ -34,10 +34,8 @@ namespace InspectlineAlpha.Controllers
         // GET: CustomerVehicle/CreateCustVeh
         public ActionResult CreateCustVeh()
         {
-            CustomerViewModel model = new CustomerViewModel();
-            model.Customers = Customer.GetCustomers(db);
-            
-            return View(model);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "FullName");
+            return View();
         }
 
         // POST: CustomerVehicle/CreateCustVeh
@@ -59,6 +57,7 @@ namespace InspectlineAlpha.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
+            Customer customer = Customer.GetCustById(id, db);
             CustomerVehicle customervehicle = CustomerVehicle.GetCustVehById(id, db);
 
             return View(customervehicle);

@@ -22,21 +22,6 @@ namespace InspectlineAlpha.Controllers
             return View(db.Customers.ToList());
         }
 
-        // POST: Customer/CreateCustomer/
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult IndexSample([Bind(Include = "FirstName, LastName, Title, Address, City, State, ZipCode, Country, CellPhone, HomePhone, Email, CustomerVehicleID, YearID, MakeName, ModelName")] Customer customer, CustomerVehicle customervehicle)
-        {
-            if (ModelState.IsValid)
-            {
-                Customer.CreateCustomer(customer, db);
-                CustomerVehicle.CreateCustVeh(customervehicle, db);
-                return RedirectToAction("Index");
-            }
-            return View(customer);
-        }
-
-
         // GET: Customer/CustomerDetails/
         public ActionResult CustomerDetails(int? id)
         {
