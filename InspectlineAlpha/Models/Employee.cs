@@ -76,9 +76,13 @@ namespace InspectlineAlpha.Models
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Birth Date")]
         public string BirthDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Hire Date")]
         public string HireDate { get; set; }
 

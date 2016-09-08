@@ -272,7 +272,6 @@
     <Content Include="Views\Shop\DeleteShop.cshtml" />
     <Content Include="Views\Shop\EditShop.cshtml" />
     <Content Include="Views\CustomerVehicle\Index.cshtml" />
-    <Content Include="Views\CustomerVehicle\CreateCustVehSAVE.cshtml" />
     <Content Include="Views\CustomerVehicle\DeleteCustVeh.cshtml" />
     <Content Include="Views\CustomerVehicle\CustVehDetails.cshtml" />
     <Content Include="Views\CustomerVehicle\EditCustVeh.cshtml" />

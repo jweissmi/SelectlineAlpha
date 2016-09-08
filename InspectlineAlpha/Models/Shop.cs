@@ -63,6 +63,8 @@ namespace InspectlineAlpha.Models
         [DisplayName("Shop Name")]
         public string ShopName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Added On Date")]
         public string AddedOnDate { get; set; }
 

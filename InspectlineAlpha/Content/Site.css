@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 300px;
 }
+
+.required:after 
+{
+    content: "*";
+    font-weight: bold;
+    color: red; 
+}
