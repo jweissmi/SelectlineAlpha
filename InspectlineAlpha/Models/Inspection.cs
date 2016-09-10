@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace InspectlineAlpha.Models
 {
     [MetadataType(typeof(InspectionMetaData))]
@@ -40,20 +41,6 @@ namespace InspectlineAlpha.Models
                                      select i).FirstOrDefault();
 
             return inspection;
-        }
-
-        public static SelectList GetCustomers(InspectlineDataContext db)
-        {
-            var customers = (from i in db.Customers
-                             select i)
-                        .Select(x =>
-                                new SelectListItem
-                                {
-                                    Value = x.CustomerID.ToString(),
-                                    Text = x.FirstName + " " + x.LastName
-                                });
-
-            return new SelectList(customers, "Value", "Text");
         }
 
         public static SelectList GetCustomerVehicle(InspectlineDataContext db)
@@ -97,6 +84,9 @@ namespace InspectlineAlpha.Models
 
     public class InspectionMetaData
     {
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Date")]
         public string InspectionDate { get; set; }
 

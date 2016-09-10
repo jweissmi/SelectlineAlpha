@@ -12,7 +12,7 @@ namespace InspectlineAlpha.Models
 
     public partial class Employee
     {
-        [DisplayName("Name")]
+        [DisplayName("Employee")]
         public string FullName
         {
             get

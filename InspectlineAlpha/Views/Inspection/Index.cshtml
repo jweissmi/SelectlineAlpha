@@ -7,18 +7,12 @@
 <h2>Inspections</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateInspection")
 </p>
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ShopID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerVehicleID)
+            @Html.DisplayNameFor(model => model.CustomerVehicle.CustVeh)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InspectionDate)
@@ -27,43 +21,32 @@
             @Html.DisplayNameFor(model => model.InspectionMileage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InspectionResultID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeID)
+            @Html.DisplayNameFor(model => model.Employee.FullName)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShopID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerVehicleID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InspectionDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InspectionMileage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InspectionResultID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InspectionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InspectionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InspectionID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerVehicle.CustVeh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InspectionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InspectionMileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditInspection", new { id = item.InspectionID }) |
+                @Html.ActionLink("Details", "InspectionDetails", new { id = item.InspectionID }) |
+                @Html.ActionLink("Delete", "DeleteInspection", new { id = item.InspectionID })
+            </td>
+        </tr>
+    }
 
 </table>

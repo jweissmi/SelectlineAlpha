@@ -1,20 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Inspectline" Class="InspectlineDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-BRM8A2N;Initial Catalog=Inspectline;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="InspectlineConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Inspection" Member="Inspections">
-    <Type Name="Inspection">
-      <Column Name="InspectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ShopID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InspectionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="InspectionMileage" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="InspectionResultID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />
-      <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
-      <Association Name="CustomerVehicle_Inspection" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Shop" Member="Shops">
     <Type Name="Shop">
       <Column Name="ShopID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -50,6 +35,21 @@
       <Association Name="Employee_Inspection" Member="Inspections" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Inspection" />
     </Type>
   </Table>
+  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
+    <Type Name="CustomerVehicle">
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerVehicle_Inspection" Member="Inspections" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Inspection" />
+      <Association Name="Customer_CustomerVehicle" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Customers" Member="Customers">
     <Type Name="Customer">
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -67,19 +67,18 @@
       <Association Name="Customer_CustomerVehicle" Member="CustomerVehicles" ThisKey="CustomerID" OtherKey="CustomerID" Type="CustomerVehicle" />
     </Type>
   </Table>
-  <Table Name="dbo.CustomerVehicle" Member="CustomerVehicles">
-    <Type Name="CustomerVehicle">
-      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="YearID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ModelName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="SubmodelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Liter" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="BaseVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EngineBaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CustomerVehicle_Inspection" Member="Inspections" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="Inspection" />
-      <Association Name="Customer_CustomerVehicle" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+  <Table Name="dbo.Inspection" Member="Inspections">
+    <Type Name="Inspection">
+      <Column Name="InspectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ShopID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerVehicleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InspectionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InspectionMileage" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="InspectionResultID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerVehicle_Inspection" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
+      <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

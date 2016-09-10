@@ -30,21 +30,21 @@ namespace InspectlineAlpha.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertInspection(Inspection instance);
-    partial void UpdateInspection(Inspection instance);
-    partial void DeleteInspection(Inspection instance);
     partial void InsertShop(Shop instance);
     partial void UpdateShop(Shop instance);
     partial void DeleteShop(Shop instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
-    partial void InsertCustomer(Customer instance);
-    partial void UpdateCustomer(Customer instance);
-    partial void DeleteCustomer(Customer instance);
     partial void InsertCustomerVehicle(CustomerVehicle instance);
     partial void UpdateCustomerVehicle(CustomerVehicle instance);
     partial void DeleteCustomerVehicle(CustomerVehicle instance);
+    partial void InsertCustomer(Customer instance);
+    partial void UpdateCustomer(Customer instance);
+    partial void DeleteCustomer(Customer instance);
+    partial void InsertInspection(Inspection instance);
+    partial void UpdateInspection(Inspection instance);
+    partial void DeleteInspection(Inspection instance);
     #endregion
 		
 		public InspectlineDataContext() : 
@@ -77,14 +77,6 @@ namespace InspectlineAlpha.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Inspection> Inspections
-		{
-			get
-			{
-				return this.GetTable<Inspection>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Shop> Shops
 		{
 			get
@@ -101,6 +93,14 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<CustomerVehicle> CustomerVehicles
+		{
+			get
+			{
+				return this.GetTable<CustomerVehicle>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Customer> Customers
 		{
 			get
@@ -109,364 +109,11 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<CustomerVehicle> CustomerVehicles
+		public System.Data.Linq.Table<Inspection> Inspections
 		{
 			get
 			{
-				return this.GetTable<CustomerVehicle>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Inspection")]
-	public partial class Inspection : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _InspectionID;
-		
-		private System.Nullable<int> _ShopID;
-		
-		private System.Nullable<int> _CustomerID;
-		
-		private System.Nullable<int> _CustomerVehicleID;
-		
-		private System.Nullable<System.DateTime> _InspectionDate;
-		
-		private string _InspectionMileage;
-		
-		private System.Nullable<int> _InspectionResultID;
-		
-		private System.Nullable<int> _EmployeeID;
-		
-		private EntityRef<Shop> _Shop;
-		
-		private EntityRef<Employee> _Employee;
-		
-		private EntityRef<CustomerVehicle> _CustomerVehicle;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnInspectionIDChanging(int value);
-    partial void OnInspectionIDChanged();
-    partial void OnShopIDChanging(System.Nullable<int> value);
-    partial void OnShopIDChanged();
-    partial void OnCustomerIDChanging(System.Nullable<int> value);
-    partial void OnCustomerIDChanged();
-    partial void OnCustomerVehicleIDChanging(System.Nullable<int> value);
-    partial void OnCustomerVehicleIDChanged();
-    partial void OnInspectionDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnInspectionDateChanged();
-    partial void OnInspectionMileageChanging(string value);
-    partial void OnInspectionMileageChanged();
-    partial void OnInspectionResultIDChanging(System.Nullable<int> value);
-    partial void OnInspectionResultIDChanged();
-    partial void OnEmployeeIDChanging(System.Nullable<int> value);
-    partial void OnEmployeeIDChanged();
-    #endregion
-		
-		public Inspection()
-		{
-			this._Shop = default(EntityRef<Shop>);
-			this._Employee = default(EntityRef<Employee>);
-			this._CustomerVehicle = default(EntityRef<CustomerVehicle>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int InspectionID
-		{
-			get
-			{
-				return this._InspectionID;
-			}
-			set
-			{
-				if ((this._InspectionID != value))
-				{
-					this.OnInspectionIDChanging(value);
-					this.SendPropertyChanging();
-					this._InspectionID = value;
-					this.SendPropertyChanged("InspectionID");
-					this.OnInspectionIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShopID", DbType="Int")]
-		public System.Nullable<int> ShopID
-		{
-			get
-			{
-				return this._ShopID;
-			}
-			set
-			{
-				if ((this._ShopID != value))
-				{
-					if (this._Shop.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnShopIDChanging(value);
-					this.SendPropertyChanging();
-					this._ShopID = value;
-					this.SendPropertyChanged("ShopID");
-					this.OnShopIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
-		public System.Nullable<int> CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					this.OnCustomerIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerID = value;
-					this.SendPropertyChanged("CustomerID");
-					this.OnCustomerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerVehicleID", DbType="Int")]
-		public System.Nullable<int> CustomerVehicleID
-		{
-			get
-			{
-				return this._CustomerVehicleID;
-			}
-			set
-			{
-				if ((this._CustomerVehicleID != value))
-				{
-					if (this._CustomerVehicle.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCustomerVehicleIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerVehicleID = value;
-					this.SendPropertyChanged("CustomerVehicleID");
-					this.OnCustomerVehicleIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> InspectionDate
-		{
-			get
-			{
-				return this._InspectionDate;
-			}
-			set
-			{
-				if ((this._InspectionDate != value))
-				{
-					this.OnInspectionDateChanging(value);
-					this.SendPropertyChanging();
-					this._InspectionDate = value;
-					this.SendPropertyChanged("InspectionDate");
-					this.OnInspectionDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionMileage", DbType="NVarChar(15)")]
-		public string InspectionMileage
-		{
-			get
-			{
-				return this._InspectionMileage;
-			}
-			set
-			{
-				if ((this._InspectionMileage != value))
-				{
-					this.OnInspectionMileageChanging(value);
-					this.SendPropertyChanging();
-					this._InspectionMileage = value;
-					this.SendPropertyChanged("InspectionMileage");
-					this.OnInspectionMileageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionResultID", DbType="Int")]
-		public System.Nullable<int> InspectionResultID
-		{
-			get
-			{
-				return this._InspectionResultID;
-			}
-			set
-			{
-				if ((this._InspectionResultID != value))
-				{
-					this.OnInspectionResultIDChanging(value);
-					this.SendPropertyChanging();
-					this._InspectionResultID = value;
-					this.SendPropertyChanged("InspectionResultID");
-					this.OnInspectionResultIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int")]
-		public System.Nullable<int> EmployeeID
-		{
-			get
-			{
-				return this._EmployeeID;
-			}
-			set
-			{
-				if ((this._EmployeeID != value))
-				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeID = value;
-					this.SendPropertyChanged("EmployeeID");
-					this.OnEmployeeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Shop_Inspection", Storage="_Shop", ThisKey="ShopID", OtherKey="ShopID", IsForeignKey=true)]
-		public Shop Shop
-		{
-			get
-			{
-				return this._Shop.Entity;
-			}
-			set
-			{
-				Shop previousValue = this._Shop.Entity;
-				if (((previousValue != value) 
-							|| (this._Shop.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Shop.Entity = null;
-						previousValue.Inspections.Remove(this);
-					}
-					this._Shop.Entity = value;
-					if ((value != null))
-					{
-						value.Inspections.Add(this);
-						this._ShopID = value.ShopID;
-					}
-					else
-					{
-						this._ShopID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Shop");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Inspection", Storage="_Employee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.Inspections.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.Inspections.Add(this);
-						this._EmployeeID = value.EmployeeID;
-					}
-					else
-					{
-						this._EmployeeID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_CustomerVehicle", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID", IsForeignKey=true)]
-		public CustomerVehicle CustomerVehicle
-		{
-			get
-			{
-				return this._CustomerVehicle.Entity;
-			}
-			set
-			{
-				CustomerVehicle previousValue = this._CustomerVehicle.Entity;
-				if (((previousValue != value) 
-							|| (this._CustomerVehicle.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CustomerVehicle.Entity = null;
-						previousValue.Inspections.Remove(this);
-					}
-					this._CustomerVehicle.Entity = value;
-					if ((value != null))
-					{
-						value.Inspections.Add(this);
-						this._CustomerVehicleID = value.CustomerVehicleID;
-					}
-					else
-					{
-						this._CustomerVehicleID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CustomerVehicle");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Inspection>();
 			}
 		}
 	}
@@ -1203,6 +850,329 @@ namespace InspectlineAlpha.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CustomerVehicle")]
+	public partial class CustomerVehicle : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CustomerVehicleID;
+		
+		private int _CustomerID;
+		
+		private int _YearID;
+		
+		private string _MakeName;
+		
+		private string _ModelName;
+		
+		private string _SubmodelName;
+		
+		private string _Liter;
+		
+		private System.Nullable<int> _BaseVehicleID;
+		
+		private System.Nullable<int> _EngineBaseID;
+		
+		private EntitySet<Inspection> _Inspections;
+		
+		private EntityRef<Customer> _Customer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCustomerVehicleIDChanging(int value);
+    partial void OnCustomerVehicleIDChanged();
+    partial void OnCustomerIDChanging(int value);
+    partial void OnCustomerIDChanged();
+    partial void OnYearIDChanging(int value);
+    partial void OnYearIDChanged();
+    partial void OnMakeNameChanging(string value);
+    partial void OnMakeNameChanged();
+    partial void OnModelNameChanging(string value);
+    partial void OnModelNameChanged();
+    partial void OnSubmodelNameChanging(string value);
+    partial void OnSubmodelNameChanged();
+    partial void OnLiterChanging(string value);
+    partial void OnLiterChanged();
+    partial void OnBaseVehicleIDChanging(System.Nullable<int> value);
+    partial void OnBaseVehicleIDChanged();
+    partial void OnEngineBaseIDChanging(System.Nullable<int> value);
+    partial void OnEngineBaseIDChanged();
+    #endregion
+		
+		public CustomerVehicle()
+		{
+			this._Inspections = new EntitySet<Inspection>(new Action<Inspection>(this.attach_Inspections), new Action<Inspection>(this.detach_Inspections));
+			this._Customer = default(EntityRef<Customer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerVehicleID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CustomerVehicleID
+		{
+			get
+			{
+				return this._CustomerVehicleID;
+			}
+			set
+			{
+				if ((this._CustomerVehicleID != value))
+				{
+					this.OnCustomerVehicleIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerVehicleID = value;
+					this.SendPropertyChanged("CustomerVehicleID");
+					this.OnCustomerVehicleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int NOT NULL")]
+		public int CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					if (this._Customer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearID", DbType="Int NOT NULL")]
+		public int YearID
+		{
+			get
+			{
+				return this._YearID;
+			}
+			set
+			{
+				if ((this._YearID != value))
+				{
+					this.OnYearIDChanging(value);
+					this.SendPropertyChanging();
+					this._YearID = value;
+					this.SendPropertyChanged("YearID");
+					this.OnYearIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MakeName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string MakeName
+		{
+			get
+			{
+				return this._MakeName;
+			}
+			set
+			{
+				if ((this._MakeName != value))
+				{
+					this.OnMakeNameChanging(value);
+					this.SendPropertyChanging();
+					this._MakeName = value;
+					this.SendPropertyChanged("MakeName");
+					this.OnMakeNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string ModelName
+		{
+			get
+			{
+				return this._ModelName;
+			}
+			set
+			{
+				if ((this._ModelName != value))
+				{
+					this.OnModelNameChanging(value);
+					this.SendPropertyChanging();
+					this._ModelName = value;
+					this.SendPropertyChanged("ModelName");
+					this.OnModelNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubmodelName", DbType="NVarChar(50)")]
+		public string SubmodelName
+		{
+			get
+			{
+				return this._SubmodelName;
+			}
+			set
+			{
+				if ((this._SubmodelName != value))
+				{
+					this.OnSubmodelNameChanging(value);
+					this.SendPropertyChanging();
+					this._SubmodelName = value;
+					this.SendPropertyChanged("SubmodelName");
+					this.OnSubmodelNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Liter", DbType="NVarChar(6)")]
+		public string Liter
+		{
+			get
+			{
+				return this._Liter;
+			}
+			set
+			{
+				if ((this._Liter != value))
+				{
+					this.OnLiterChanging(value);
+					this.SendPropertyChanging();
+					this._Liter = value;
+					this.SendPropertyChanged("Liter");
+					this.OnLiterChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaseVehicleID", DbType="Int")]
+		public System.Nullable<int> BaseVehicleID
+		{
+			get
+			{
+				return this._BaseVehicleID;
+			}
+			set
+			{
+				if ((this._BaseVehicleID != value))
+				{
+					this.OnBaseVehicleIDChanging(value);
+					this.SendPropertyChanging();
+					this._BaseVehicleID = value;
+					this.SendPropertyChanged("BaseVehicleID");
+					this.OnBaseVehicleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EngineBaseID", DbType="Int")]
+		public System.Nullable<int> EngineBaseID
+		{
+			get
+			{
+				return this._EngineBaseID;
+			}
+			set
+			{
+				if ((this._EngineBaseID != value))
+				{
+					this.OnEngineBaseIDChanging(value);
+					this.SendPropertyChanging();
+					this._EngineBaseID = value;
+					this.SendPropertyChanged("EngineBaseID");
+					this.OnEngineBaseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_Inspections", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID")]
+		public EntitySet<Inspection> Inspections
+		{
+			get
+			{
+				return this._Inspections;
+			}
+			set
+			{
+				this._Inspections.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_CustomerVehicle", Storage="_Customer", ThisKey="CustomerID", OtherKey="CustomerID", IsForeignKey=true)]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.CustomerVehicles.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.CustomerVehicles.Add(this);
+						this._CustomerID = value.CustomerID;
+					}
+					else
+					{
+						this._CustomerID = default(int);
+					}
+					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Inspections(Inspection entity)
+		{
+			this.SendPropertyChanging();
+			entity.CustomerVehicle = this;
+		}
+		
+		private void detach_Inspections(Inspection entity)
+		{
+			this.SendPropertyChanging();
+			entity.CustomerVehicle = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customers")]
 	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1557,67 +1527,106 @@ namespace InspectlineAlpha.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CustomerVehicle")]
-	public partial class CustomerVehicle : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Inspection")]
+	public partial class Inspection : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _CustomerVehicleID;
+		private int _InspectionID;
 		
-		private int _CustomerID;
+		private System.Nullable<int> _ShopID;
 		
-		private int _YearID;
+		private System.Nullable<int> _CustomerVehicleID;
 		
-		private string _MakeName;
+		private System.Nullable<System.DateTime> _InspectionDate;
 		
-		private string _ModelName;
+		private string _InspectionMileage;
 		
-		private string _SubmodelName;
+		private System.Nullable<int> _InspectionResultID;
 		
-		private string _Liter;
+		private System.Nullable<int> _EmployeeID;
 		
-		private System.Nullable<int> _BaseVehicleID;
+		private EntityRef<CustomerVehicle> _CustomerVehicle;
 		
-		private System.Nullable<int> _EngineBaseID;
+		private EntityRef<Employee> _Employee;
 		
-		private EntitySet<Inspection> _Inspections;
-		
-		private EntityRef<Customer> _Customer;
+		private EntityRef<Shop> _Shop;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCustomerVehicleIDChanging(int value);
+    partial void OnInspectionIDChanging(int value);
+    partial void OnInspectionIDChanged();
+    partial void OnShopIDChanging(System.Nullable<int> value);
+    partial void OnShopIDChanged();
+    partial void OnCustomerVehicleIDChanging(System.Nullable<int> value);
     partial void OnCustomerVehicleIDChanged();
-    partial void OnCustomerIDChanging(int value);
-    partial void OnCustomerIDChanged();
-    partial void OnYearIDChanging(int value);
-    partial void OnYearIDChanged();
-    partial void OnMakeNameChanging(string value);
-    partial void OnMakeNameChanged();
-    partial void OnModelNameChanging(string value);
-    partial void OnModelNameChanged();
-    partial void OnSubmodelNameChanging(string value);
-    partial void OnSubmodelNameChanged();
-    partial void OnLiterChanging(string value);
-    partial void OnLiterChanged();
-    partial void OnBaseVehicleIDChanging(System.Nullable<int> value);
-    partial void OnBaseVehicleIDChanged();
-    partial void OnEngineBaseIDChanging(System.Nullable<int> value);
-    partial void OnEngineBaseIDChanged();
+    partial void OnInspectionDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnInspectionDateChanged();
+    partial void OnInspectionMileageChanging(string value);
+    partial void OnInspectionMileageChanged();
+    partial void OnInspectionResultIDChanging(System.Nullable<int> value);
+    partial void OnInspectionResultIDChanged();
+    partial void OnEmployeeIDChanging(System.Nullable<int> value);
+    partial void OnEmployeeIDChanged();
     #endregion
 		
-		public CustomerVehicle()
+		public Inspection()
 		{
-			this._Inspections = new EntitySet<Inspection>(new Action<Inspection>(this.attach_Inspections), new Action<Inspection>(this.detach_Inspections));
-			this._Customer = default(EntityRef<Customer>);
+			this._CustomerVehicle = default(EntityRef<CustomerVehicle>);
+			this._Employee = default(EntityRef<Employee>);
+			this._Shop = default(EntityRef<Shop>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerVehicleID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CustomerVehicleID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int InspectionID
+		{
+			get
+			{
+				return this._InspectionID;
+			}
+			set
+			{
+				if ((this._InspectionID != value))
+				{
+					this.OnInspectionIDChanging(value);
+					this.SendPropertyChanging();
+					this._InspectionID = value;
+					this.SendPropertyChanged("InspectionID");
+					this.OnInspectionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShopID", DbType="Int")]
+		public System.Nullable<int> ShopID
+		{
+			get
+			{
+				return this._ShopID;
+			}
+			set
+			{
+				if ((this._ShopID != value))
+				{
+					if (this._Shop.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnShopIDChanging(value);
+					this.SendPropertyChanging();
+					this._ShopID = value;
+					this.SendPropertyChanged("ShopID");
+					this.OnShopIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerVehicleID", DbType="Int")]
+		public System.Nullable<int> CustomerVehicleID
 		{
 			get
 			{
@@ -1627,6 +1636,10 @@ namespace InspectlineAlpha.Models
 			{
 				if ((this._CustomerVehicleID != value))
 				{
+					if (this._CustomerVehicle.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCustomerVehicleIDChanging(value);
 					this.SendPropertyChanging();
 					this._CustomerVehicleID = value;
@@ -1636,213 +1649,188 @@ namespace InspectlineAlpha.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int NOT NULL")]
-		public int CustomerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InspectionDate
 		{
 			get
 			{
-				return this._CustomerID;
+				return this._InspectionDate;
 			}
 			set
 			{
-				if ((this._CustomerID != value))
+				if ((this._InspectionDate != value))
 				{
-					if (this._Customer.HasLoadedOrAssignedValue)
+					this.OnInspectionDateChanging(value);
+					this.SendPropertyChanging();
+					this._InspectionDate = value;
+					this.SendPropertyChanged("InspectionDate");
+					this.OnInspectionDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionMileage", DbType="NVarChar(15)")]
+		public string InspectionMileage
+		{
+			get
+			{
+				return this._InspectionMileage;
+			}
+			set
+			{
+				if ((this._InspectionMileage != value))
+				{
+					this.OnInspectionMileageChanging(value);
+					this.SendPropertyChanging();
+					this._InspectionMileage = value;
+					this.SendPropertyChanged("InspectionMileage");
+					this.OnInspectionMileageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InspectionResultID", DbType="Int")]
+		public System.Nullable<int> InspectionResultID
+		{
+			get
+			{
+				return this._InspectionResultID;
+			}
+			set
+			{
+				if ((this._InspectionResultID != value))
+				{
+					this.OnInspectionResultIDChanging(value);
+					this.SendPropertyChanging();
+					this._InspectionResultID = value;
+					this.SendPropertyChanged("InspectionResultID");
+					this.OnInspectionResultIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int")]
+		public System.Nullable<int> EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnCustomerIDChanging(value);
+					this.OnEmployeeIDChanging(value);
 					this.SendPropertyChanging();
-					this._CustomerID = value;
-					this.SendPropertyChanged("CustomerID");
-					this.OnCustomerIDChanged();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearID", DbType="Int NOT NULL")]
-		public int YearID
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_CustomerVehicle", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID", IsForeignKey=true)]
+		public CustomerVehicle CustomerVehicle
 		{
 			get
 			{
-				return this._YearID;
+				return this._CustomerVehicle.Entity;
 			}
 			set
 			{
-				if ((this._YearID != value))
-				{
-					this.OnYearIDChanging(value);
-					this.SendPropertyChanging();
-					this._YearID = value;
-					this.SendPropertyChanged("YearID");
-					this.OnYearIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MakeName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string MakeName
-		{
-			get
-			{
-				return this._MakeName;
-			}
-			set
-			{
-				if ((this._MakeName != value))
-				{
-					this.OnMakeNameChanging(value);
-					this.SendPropertyChanging();
-					this._MakeName = value;
-					this.SendPropertyChanged("MakeName");
-					this.OnMakeNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string ModelName
-		{
-			get
-			{
-				return this._ModelName;
-			}
-			set
-			{
-				if ((this._ModelName != value))
-				{
-					this.OnModelNameChanging(value);
-					this.SendPropertyChanging();
-					this._ModelName = value;
-					this.SendPropertyChanged("ModelName");
-					this.OnModelNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubmodelName", DbType="NVarChar(50)")]
-		public string SubmodelName
-		{
-			get
-			{
-				return this._SubmodelName;
-			}
-			set
-			{
-				if ((this._SubmodelName != value))
-				{
-					this.OnSubmodelNameChanging(value);
-					this.SendPropertyChanging();
-					this._SubmodelName = value;
-					this.SendPropertyChanged("SubmodelName");
-					this.OnSubmodelNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Liter", DbType="NVarChar(6)")]
-		public string Liter
-		{
-			get
-			{
-				return this._Liter;
-			}
-			set
-			{
-				if ((this._Liter != value))
-				{
-					this.OnLiterChanging(value);
-					this.SendPropertyChanging();
-					this._Liter = value;
-					this.SendPropertyChanged("Liter");
-					this.OnLiterChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaseVehicleID", DbType="Int")]
-		public System.Nullable<int> BaseVehicleID
-		{
-			get
-			{
-				return this._BaseVehicleID;
-			}
-			set
-			{
-				if ((this._BaseVehicleID != value))
-				{
-					this.OnBaseVehicleIDChanging(value);
-					this.SendPropertyChanging();
-					this._BaseVehicleID = value;
-					this.SendPropertyChanged("BaseVehicleID");
-					this.OnBaseVehicleIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EngineBaseID", DbType="Int")]
-		public System.Nullable<int> EngineBaseID
-		{
-			get
-			{
-				return this._EngineBaseID;
-			}
-			set
-			{
-				if ((this._EngineBaseID != value))
-				{
-					this.OnEngineBaseIDChanging(value);
-					this.SendPropertyChanging();
-					this._EngineBaseID = value;
-					this.SendPropertyChanged("EngineBaseID");
-					this.OnEngineBaseIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerVehicle_Inspection", Storage="_Inspections", ThisKey="CustomerVehicleID", OtherKey="CustomerVehicleID")]
-		public EntitySet<Inspection> Inspections
-		{
-			get
-			{
-				return this._Inspections;
-			}
-			set
-			{
-				this._Inspections.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_CustomerVehicle", Storage="_Customer", ThisKey="CustomerID", OtherKey="CustomerID", IsForeignKey=true)]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
+				CustomerVehicle previousValue = this._CustomerVehicle.Entity;
 				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+							|| (this._CustomerVehicle.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Customer.Entity = null;
-						previousValue.CustomerVehicles.Remove(this);
+						this._CustomerVehicle.Entity = null;
+						previousValue.Inspections.Remove(this);
 					}
-					this._Customer.Entity = value;
+					this._CustomerVehicle.Entity = value;
 					if ((value != null))
 					{
-						value.CustomerVehicles.Add(this);
-						this._CustomerID = value.CustomerID;
+						value.Inspections.Add(this);
+						this._CustomerVehicleID = value.CustomerVehicleID;
 					}
 					else
 					{
-						this._CustomerID = default(int);
+						this._CustomerVehicleID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Customer");
+					this.SendPropertyChanged("CustomerVehicle");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Inspection", Storage="_Employee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.Inspections.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.Inspections.Add(this);
+						this._EmployeeID = value.EmployeeID;
+					}
+					else
+					{
+						this._EmployeeID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Employee");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Shop_Inspection", Storage="_Shop", ThisKey="ShopID", OtherKey="ShopID", IsForeignKey=true)]
+		public Shop Shop
+		{
+			get
+			{
+				return this._Shop.Entity;
+			}
+			set
+			{
+				Shop previousValue = this._Shop.Entity;
+				if (((previousValue != value) 
+							|| (this._Shop.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Shop.Entity = null;
+						previousValue.Inspections.Remove(this);
+					}
+					this._Shop.Entity = value;
+					if ((value != null))
+					{
+						value.Inspections.Add(this);
+						this._ShopID = value.ShopID;
+					}
+					else
+					{
+						this._ShopID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Shop");
 				}
 			}
 		}
@@ -1865,18 +1853,6 @@ namespace InspectlineAlpha.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Inspections(Inspection entity)
-		{
-			this.SendPropertyChanging();
-			entity.CustomerVehicle = this;
-		}
-		
-		private void detach_Inspections(Inspection entity)
-		{
-			this.SendPropertyChanging();
-			entity.CustomerVehicle = null;
 		}
 	}
 }

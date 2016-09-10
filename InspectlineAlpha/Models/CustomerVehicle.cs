@@ -18,8 +18,16 @@ namespace InspectlineAlpha.Models
         {
             get
             {
-
                 return Customer.FirstName + " " + Customer.LastName;
+            }
+        }
+
+        [DisplayName("Customer and Vehicle")]
+        public string CustVeh
+        {
+            get
+            {
+                return Customer.FirstName + " " + Customer.LastName + " - " + YearID + " " + MakeName + " " + ModelName;
             }
         }
 

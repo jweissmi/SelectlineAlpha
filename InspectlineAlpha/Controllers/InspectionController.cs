@@ -5,10 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data;
-using System.Data.Entity;
 using System.Net;
-using System.Data.Entity.Core.Objects;
 
 namespace InspectlineAlpha.Controllers
 {
@@ -29,6 +26,9 @@ namespace InspectlineAlpha.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
             Inspection inspection = Inspection.GetInspectionById(id, db);
+            CustomerVehicle custveh = CustomerVehicle.GetCustVehById(id, db);
+            Employee employee = Employee.GetEmpById(id, db);
+            Shop shop = Shop.GetShopById(id, db);
 
             return View(inspection);
         }
@@ -37,7 +37,6 @@ namespace InspectlineAlpha.Controllers
         public ActionResult CreateInspection()
         {
             InspectionViewModel model = new InspectionViewModel();
-            model.Customers = Inspection.GetCustomers(db);
             model.CustomerVehicles = Inspection.GetCustomerVehicle(db);
             model.Employees = Inspection.GetEmployees(db);
             model.Shops = Inspection.GetCustomerVehicle(db);
@@ -48,7 +47,7 @@ namespace InspectlineAlpha.Controllers
         // POST: Inspection/CreateInspection
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateInspection([Bind(Include = "CustomerID, CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, InspectionResult, EmployeeID")] Inspection inspection)
+        public ActionResult CreateInspection([Bind(Include = "CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, InspectionResult, EmployeeID")] Inspection inspection)
         {
             if (ModelState.IsValid)
             {
@@ -81,19 +80,23 @@ namespace InspectlineAlpha.Controllers
         }
 
         // GET: Inspection/DeleteInspection/
-        public ActionResult Delete(int id)
+        public ActionResult DeleteInspection(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            Inspection inspection = Inspection.GetInspectionById(id, db);
+
+            return View(inspection);
         }
 
         // POST: Inspection/DeleteInspection/
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("DeleteInspection")]
+        public ActionResult DeleteConfirmed(int? id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Inspection.DeleteInspectionById(id, db);
                 return RedirectToAction("Index");
             }
             catch
