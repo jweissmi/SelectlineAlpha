@@ -4,8 +4,166 @@
     ViewBag.Title = "EditCustVeh";
 }
 
-<h2>Edit Customer Vehicle</h2>
+<script src="~/Scripts/jquery-3.1.0.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //years
+        var Years = {};
+        Years.url = '/CustomerVehicle/GetYears';
+        Years.type = 'POST';
+        Years.datatype = 'json';
+        Years.contentType = 'application/json';
+        Years.success = function (YearList) {
+            $('#YearID').find('option').remove();
 
+            $('#YearID').append($('<option>', {
+                value: '',
+                text: 'Select'
+            }));
+
+            $.each(YearList, function (i, model) {
+                $('#YearID').append($('<option>', {
+                    value: model,
+                    text: model
+                }));
+            });
+
+            $('#YearID').val('@Model.YearID').prop('selected', true);
+        };
+        Years.error = function () { alert('Error getting years'); };
+        $.ajax(Years);
+
+        //makes
+        var Makes = {};
+        Makes.url = '/CustomerVehicle/GetMakes';
+        Makes.type = 'POST';
+        Makes.data = JSON.stringify({ year: @Model.YearID });
+        Makes.datatype = 'json';
+        Makes.contentType = 'application/json';
+        Makes.success = function (MakeList) {
+            $('#MakeName').find('option').remove();
+
+            $('#MakeName').append($('<option>', {
+                value: '',
+                text: 'Select'
+            }));
+
+            $.each(MakeList, function (i, make) {
+                $('#MakeName').append($('<option>', {
+                    value: make,
+                    text: make
+                }));
+            });
+
+            $('#MakeName').prop('disabled', false);
+            $('#MakeName').val('@Model.MakeName').prop('selected', true);
+        };
+        Makes.error = function () { alert('Error getting makes'); };
+        $.ajax(Makes);
+
+        //models
+        var Models = {};
+        Models.url = '/CustomerVehicle/GetModels';
+        Models.type = 'POST';
+        Models.data = JSON.stringify({ year: @Model.YearID, makeName: '@Model.MakeName' });
+        Models.datatype = 'json';
+        Models.contentType = 'application/json';
+        Models.success = function (ModelList) {
+            $('#ModelName').find('option').remove();
+
+            $('#ModelName').append($('<option>', {
+                value: '',
+                text: 'Select'
+            }));
+
+            $.each(ModelList, function (i, model) {
+                $('#ModelName').append($('<option>', {
+                    value: model,
+                    text: model
+                }));
+            });
+
+            $('#ModelName').val('@Model.ModelName').prop('selected', true);
+            $('#ModelName').prop('disabled', false);
+        };
+        Models.error = function () { alert('Error getting models'); };
+        $.ajax(Models);
+
+        //dropbox value changes
+        $('#YearID').change(function () {
+            $('#ModelName').find('option').remove();
+            $('#ModelName').prop('disabled', true);
+
+            if ($('#YearID').val() != 'Select' && $('#YearID').val() != '') {
+                var MakesChange = {};
+                MakesChange.url = '/CustomerVehicle/GetMakes';
+                MakesChange.type = 'POST';
+                MakesChange.data = JSON.stringify({ year: $('#YearID').val() });
+                MakesChange.datatype = 'json';
+                MakesChange.contentType = 'application/json';
+                MakesChange.success = function (MakesChangeList) {
+                    $('#MakeName').find('option').remove();
+
+                    $('#MakeName').append($('<option>', {
+                        value: '',
+                        text: 'Select'
+                    }));
+
+                    $.each(MakesChangeList, function (i, make) {
+                        $('#MakeName').append($('<option>', {
+                            value: make,
+                            text: make
+                        }));
+                    });
+
+                    $('#MakeName').prop('disabled', false);
+                };
+                MakesChange.error = function () { alert('Error getting Makes'); };
+                $.ajax(MakesChange);
+            }
+            else {
+                $('#MakeName').find('option').remove();
+                $('#MakeName').prop('disabled', true);
+            }
+        });
+
+        $('#MakeName').change(function () {
+            if ($('#MakeName').val() != 'Select' && $('#MakeName').val() != '') {
+                var ModelsChange = {};
+                ModelsChange.url = '/CustomerVehicle/GetModels';
+                ModelsChange.type = 'POST';
+                ModelsChange.data = JSON.stringify({ year: $('#YearID').val(), makeName: $('#MakeName').val() });
+                ModelsChange.datatype = 'json';
+                ModelsChange.contentType = 'application/json';
+                ModelsChange.success = function (ModelsChangeList) {
+                    $('#ModelName').find('option').remove();
+
+                    $('#ModelName').append($('<option>', {
+                        value: '',
+                        text: 'Select'
+                    }));
+
+                    $.each(ModelsChangeList, function (i, model) {
+                        $('#ModelName').append($('<option>', {
+                            value: model,
+                            text: model
+                        }));
+                    });
+
+                    $('#ModelName').prop('disabled', false);
+                };
+                ModelsChange.error = function () { alert('Error getting ModelsChange'); };
+                $.ajax(ModelsChange);
+            }
+            else {
+                $('#ModelName').find('option').remove();
+                $('#ModelName').prop('disabled', true);
+            }
+        });
+    });
+</script>
+
+<h2>Edit Customer Vehicle</h2>
 
 @using (Html.BeginForm())
 {
@@ -33,7 +191,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.YearID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.YearID, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="YearID" name="YearID" class="form-control"></select>
+                @*@Html.EditorFor(model => model.YearID, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.YearID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +200,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MakeName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MakeName, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="MakeName" name="MakeName" class="form-control"></select>
+                @*@Html.EditorFor(model => model.MakeName, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.MakeName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +209,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ModelName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ModelName, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="ModelName" name="ModelName" class="form-control"></select>
+                @*@Html.EditorFor(model => model.ModelName, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
             </div>
         </div>

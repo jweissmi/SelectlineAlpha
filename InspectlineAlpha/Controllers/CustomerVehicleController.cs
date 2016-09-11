@@ -12,6 +12,7 @@ namespace InspectlineAlpha.Controllers
     public class CustomerVehicleController : Controller
     {
         private InspectlineDataContext db = new InspectlineDataContext();
+        private VehicleConfigDataContext vcdb = new VehicleConfigDataContext();
 
         // GET: CustomerVehicle
         public ActionResult Index()
@@ -35,6 +36,7 @@ namespace InspectlineAlpha.Controllers
         public ActionResult CreateCustVeh()
         {
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "FullName");
+
             return View();
         }
 
@@ -99,6 +101,45 @@ namespace InspectlineAlpha.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: CustomerVehicle/GetYears/
+        public JsonResult GetYears()
+        {
+            List<int> yearsList = new List<int>();
+
+            yearsList = (from yr in vcdb.Years
+             where yr.YearID >= 1990
+             select yr.YearID).Distinct().OrderByDescending(yr => yr).ToList();
+
+            return Json(yearsList);
+        }
+
+        // GET: CustomerVehicle/GetMakes/
+        public JsonResult GetMakes(int year)
+        {
+            List<string> makesList = new List<string>();
+
+            makesList = (from make in vcdb.Makes
+                         join bv in vcdb.BaseVehicles on make.MakeID equals bv.MakeID
+                         where bv.YearID == year
+                         select make.MakeName.Trim()).Distinct().ToList();
+
+            return Json(makesList);
+        }
+
+        // GET: CustomerVehicle/GetModels/
+        public JsonResult GetModels(int year, string makeName)
+        {
+            List<string> modelsList = new List<string>();
+
+            modelsList = (from make in vcdb.Makes
+                          join bv in vcdb.BaseVehicles on make.MakeID equals bv.MakeID
+                          join mod in vcdb.Models on bv.ModelID equals mod.ModelID
+                          where bv.YearID == year && make.MakeName == makeName
+                          select mod.ModelName.Trim()).Distinct().ToList();
+
+            return Json(modelsList);
         }
     }
 }

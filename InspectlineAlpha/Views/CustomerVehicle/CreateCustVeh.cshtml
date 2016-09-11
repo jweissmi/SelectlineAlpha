@@ -4,6 +4,9 @@
     ViewBag.Title = "CreateCustVeh";
 }
 
+<script src="~/Scripts/jquery-3.1.0.js"></script>
+<script src="~/Scripts/Inspectline/vehiclelookups.js"></script>
+
 <h2>Add Vehicle</h2>
 
 @using (Html.BeginForm())
@@ -17,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerID, "Customer", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CustomerID", null, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("CustomerID", null, "Select", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.YearID, htmlAttributes: new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.YearID, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="YearID" name="YearID" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.YearID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MakeName, htmlAttributes: new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MakeName, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="MakeName" name="MakeName" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.MakeName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ModelName, htmlAttributes: new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ModelName, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="ModelName" name="ModelName" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
             </div>
         </div>

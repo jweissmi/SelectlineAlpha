@@ -1547,6 +1547,16 @@ namespace InspectlineAlpha.Models
 		
 		private System.Nullable<int> _EmployeeID;
 		
+		private System.Nullable<int> _LeftFrontBrake;
+		
+		private System.Nullable<int> _RightFrontBrake;
+		
+		private System.Nullable<int> _LeftRearBrake;
+		
+		private System.Nullable<int> _RightRearBrake;
+		
+		private string _Comments;
+		
 		private EntityRef<CustomerVehicle> _CustomerVehicle;
 		
 		private EntityRef<Employee> _Employee;
@@ -1571,6 +1581,16 @@ namespace InspectlineAlpha.Models
     partial void OnInspectionResultIDChanged();
     partial void OnEmployeeIDChanging(System.Nullable<int> value);
     partial void OnEmployeeIDChanged();
+    partial void OnLeftFrontBrakeChanging(System.Nullable<int> value);
+    partial void OnLeftFrontBrakeChanged();
+    partial void OnRightFrontBrakeChanging(System.Nullable<int> value);
+    partial void OnRightFrontBrakeChanged();
+    partial void OnLeftRearBrakeChanging(System.Nullable<int> value);
+    partial void OnLeftRearBrakeChanged();
+    partial void OnRightRearBrakeChanging(System.Nullable<int> value);
+    partial void OnRightRearBrakeChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
     #endregion
 		
 		public Inspection()
@@ -1729,6 +1749,106 @@ namespace InspectlineAlpha.Models
 					this._EmployeeID = value;
 					this.SendPropertyChanged("EmployeeID");
 					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeftFrontBrake", DbType="Int")]
+		public System.Nullable<int> LeftFrontBrake
+		{
+			get
+			{
+				return this._LeftFrontBrake;
+			}
+			set
+			{
+				if ((this._LeftFrontBrake != value))
+				{
+					this.OnLeftFrontBrakeChanging(value);
+					this.SendPropertyChanging();
+					this._LeftFrontBrake = value;
+					this.SendPropertyChanged("LeftFrontBrake");
+					this.OnLeftFrontBrakeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RightFrontBrake", DbType="Int")]
+		public System.Nullable<int> RightFrontBrake
+		{
+			get
+			{
+				return this._RightFrontBrake;
+			}
+			set
+			{
+				if ((this._RightFrontBrake != value))
+				{
+					this.OnRightFrontBrakeChanging(value);
+					this.SendPropertyChanging();
+					this._RightFrontBrake = value;
+					this.SendPropertyChanged("RightFrontBrake");
+					this.OnRightFrontBrakeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeftRearBrake", DbType="Int")]
+		public System.Nullable<int> LeftRearBrake
+		{
+			get
+			{
+				return this._LeftRearBrake;
+			}
+			set
+			{
+				if ((this._LeftRearBrake != value))
+				{
+					this.OnLeftRearBrakeChanging(value);
+					this.SendPropertyChanging();
+					this._LeftRearBrake = value;
+					this.SendPropertyChanged("LeftRearBrake");
+					this.OnLeftRearBrakeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RightRearBrake", DbType="Int")]
+		public System.Nullable<int> RightRearBrake
+		{
+			get
+			{
+				return this._RightRearBrake;
+			}
+			set
+			{
+				if ((this._RightRearBrake != value))
+				{
+					this.OnRightRearBrakeChanging(value);
+					this.SendPropertyChanging();
+					this._RightRearBrake = value;
+					this.SendPropertyChanged("RightRearBrake");
+					this.OnRightRearBrakeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
 				}
 			}
 		}

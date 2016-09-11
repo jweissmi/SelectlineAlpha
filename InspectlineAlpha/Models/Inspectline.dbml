@@ -76,6 +76,11 @@
       <Column Name="InspectionMileage" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="InspectionResultID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeftFrontBrake" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RightFrontBrake" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeftRearBrake" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RightRearBrake" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="CustomerVehicle_Inspection" Member="CustomerVehicle" ThisKey="CustomerVehicleID" OtherKey="CustomerVehicleID" Type="CustomerVehicle" IsForeignKey="true" />
       <Association Name="Employee_Inspection" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
       <Association Name="Shop_Inspection" Member="Shop" ThisKey="ShopID" OtherKey="ShopID" Type="Shop" IsForeignKey="true" />

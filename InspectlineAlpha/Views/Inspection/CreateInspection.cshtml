@@ -16,6 +16,38 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
+            @Html.LabelFor(model => model.LeftFrontBrake, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.LeftFrontBrake, 1)
+                @Html.RadioButtonFor(model => model.LeftFrontBrake, 2)
+                @Html.RadioButtonFor(model => model.LeftFrontBrake, 3)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RightFrontBrake, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.RightFrontBrake, 1)
+                @Html.RadioButtonFor(model => model.RightFrontBrake, 2)
+                @Html.RadioButtonFor(model => model.RightFrontBrake, 3)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LeftRearBrake, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.LeftRearBrake, 1)
+                @Html.RadioButtonFor(model => model.LeftRearBrake, 2)
+                @Html.RadioButtonFor(model => model.LeftRearBrake, 3)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RightRearBrake, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.RightRearBrake, 1)
+                @Html.RadioButtonFor(model => model.RightRearBrake, 2)
+                @Html.RadioButtonFor(model => model.RightRearBrake, 3)
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.CustomerVehicleID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CustomerVehicleID", null, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,3 +90,157 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<section>
+    <h3>
+        Check Brakes - Measure Front and Rear Linings
+    </h3>
+    <div class="col-md-6">
+        <table class="table">
+            <tr align="center">
+                <td></td>
+                <td>7 mm <br />or greater</td>
+                <td>6 mm <br />4 mm</td>
+                <td>3 mm <br />or less</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr align="center">
+                <td><h4>Left Front</h4></td>
+                <td>
+                    <div class="checkboxOne">
+                        <input type="checkbox" value="1" id="checkboxOneInput" name="" />
+                        <label for="checkboxOneInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwo">
+                        <input type="checkbox" value="1" id="checkboxTwoInput" name="" />
+                        <label for="checkboxTwoInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxThree">
+                        <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                        <label for="checkboxThreeInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td><h4>Left Rear</h4></td>
+                <td>
+                    <div class="checkboxFour">
+                        <input type="checkbox" value="1" id="checkboxFourInput" name="" />
+                        <label for="checkboxFourInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxFive">
+                        <input type="checkbox" value="1" id="checkboxFiveInput" name="" />
+                        <label for="checkboxFiveInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxSix">
+                        <input type="checkbox" value="1" id="checkboxSixInput" name="" />
+                        <label for="checkboxSixInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <table class="table">
+            <tr align="center">
+                <td></td>
+                <td>7 mm <br />or greater</td>
+                <td>6 mm <br />4 mm</td>
+                <td>3 mm <br />or less</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr align="center">
+                <td><h4>Right Front</h4></td>
+                <td>
+                    <div class="checkboxSeven">
+                        <input type="checkbox" value="1" id="checkboxSevenInput" name="" />
+                        <label for="checkboxSevenInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxEight">
+                        <input type="checkbox" value="1" id="checkboxEightInput" name="" />
+                        <label for="checkboxEightInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxNine">
+                        <input type="checkbox" value="1" id="checkboxNineInput" name="" />
+                        <label for="checkboxNineInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td><h4>Right Rear</h4></td>
+                <td>
+                    <div class="checkboxTen">
+                        <input type="checkbox" value="1" id="checkboxTenInput" name="" />
+                        <label for="checkboxTenInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxEleven">
+                        <input type="checkbox" value="1" id="checkboxElevenInput" name="" />
+                        <label for="checkboxElevenInput"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkboxTwelve">
+                        <input type="checkbox" value="1" id="checkboxTwelveInput" name="" />
+                        <label for="checkboxTwelveInput"></label>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        <a href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div>
+        @Html.TextArea("myTextArea", "Comments", new { @class = "form-control" })
+    </div>
+    <br />
+    <br />
+    <br />
+</section>
