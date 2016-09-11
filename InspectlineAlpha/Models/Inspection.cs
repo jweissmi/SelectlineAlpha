@@ -92,5 +92,8 @@ namespace InspectlineAlpha.Models
 
         [DisplayName("Mileage")]
         public string InspectionMileage { get; set; }
+
+        [DisplayName("Inspection By")]
+        public string EmployeeID { get; set; }
     }
 }

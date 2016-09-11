@@ -23,9 +23,14 @@ textarea {
     max-width: 300px;
 }
 
-.required:after 
-{
+/*This is the style for the astericks indication a field on a form is required*/
+.required:after {
     content: "*";
     font-weight: bold;
-    color: red; 
+    color: red;
+}
+
+/*This keeps the section from wrapping up to previous empty space*/
+.after-section {
+    clear: left;
 }

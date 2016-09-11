@@ -36,18 +36,15 @@ namespace InspectlineAlpha.Controllers
         // GET: Inspection/CreateInspection
         public ActionResult CreateInspection()
         {
-            InspectionViewModel model = new InspectionViewModel();
-            model.CustomerVehicles = Inspection.GetCustomerVehicle(db);
-            model.Employees = Inspection.GetEmployees(db);
-            model.Shops = Inspection.GetCustomerVehicle(db);
-
-            return View(model);
+            ViewBag.CustomerVehicleID = new SelectList(db.CustomerVehicles, "CustomerVehicleID", "CustVeh");
+            ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FullName");
+            return View();
         }
 
         // POST: Inspection/CreateInspection
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateInspection([Bind(Include = "CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, InspectionResult, EmployeeID")] Inspection inspection)
+        public ActionResult CreateInspection([Bind(Include = "CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, InspectionResultID, EmployeeID")] Inspection inspection)
         {
             if (ModelState.IsValid)
             {
