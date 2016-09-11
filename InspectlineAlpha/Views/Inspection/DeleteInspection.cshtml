@@ -11,28 +11,13 @@
     <h4>Inspection</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.ShopID)
+            @Html.DisplayNameFor(model => model.CustomerVehicle.CustVeh)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ShopID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerVehicleID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerVehicleID)
+            @Html.DisplayFor(model => model.CustomerVehicle.CustVeh)
         </dd>
 
         <dt>
@@ -52,24 +37,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InspectionResultID)
+            @Html.DisplayNameFor(model => model.Employee.FullName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InspectionResultID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeID)
+            @Html.DisplayFor(model => model.Employee.FullName)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
