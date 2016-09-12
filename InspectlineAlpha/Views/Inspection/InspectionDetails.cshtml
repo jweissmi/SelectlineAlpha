@@ -7,8 +7,6 @@
 <h2>InspectionDetails</h2>
 
 <div>
-    <h4>Inspection</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CustomerVehicle.CustVeh)
@@ -34,10 +32,6 @@
             @Html.DisplayFor(model => model.InspectionMileage)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.InspectionResultID)
-        </dt>
-
         <dd>
             @Html.DisplayFor(model => model.InspectionResultID)
         </dd>
@@ -50,37 +44,141 @@
             @Html.DisplayFor(model => model.Employee.FullName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LeftFrontBrake)
-        </dt>
+        <div class="col-md-6">
+            <table class="table">
+                <tr align="center">
+                    <td></td>
+                    <td>7 mm <br />or greater</td>
+                    <td>6 mm <br />4 mm</td>
+                    <td>3 mm <br />or less</td>
+                    <td></td>
+                </tr>
+                <tr align="center">
+                    <td>@Html.LabelFor(model => model.LeftFrontBrake, htmlAttributes: new { @class = "control-label" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.LeftFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "LeftFrontBrakeOne", disabled = "disabled" })
+                            <label for='LeftFrontBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.LeftFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "LeftFrontBrakeTwo", disabled = "disabled" })
+                            <label for='LeftFrontBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.LeftFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "LeftFrontBrakeThree", disabled = "disabled" })
+                            <label for='LeftFrontBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr align="center">
+                    <td>@Html.LabelFor(model => model.LeftRearBrake, htmlAttributes: new { @class = "control-label" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.LeftRearBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "LeftRearBrakeOne", disabled = "disabled" })
+                            <label for='LeftRearBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.LeftRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "LeftRearBrakeTwo", disabled = "disabled" })
+                            <label for='LeftRearBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.LeftRearBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "LeftRearBrakeThree", disabled = "disabled" })
+                            <label for='LeftRearBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr align="center">
+                    <td></td>
+                    <td>7 mm <br />or greater</td>
+                    <td>6 mm <br />4 mm</td>
+                    <td>3 mm <br />or less</td>
+                    <td></td>
+                </tr>
+                <tr align="center">
+                    <td>@Html.LabelFor(model => model.RightFrontBrake, htmlAttributes: new { @class = "control-label" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "RightFrontBrakeOne", disabled = "disabled" })
+                            <label for='RightFrontBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "RightFrontBrakeTwo", disabled = "disabled" })
+                            <label for='RightFrontBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "RightFrontBrakeThree", disabled = "disabled" })
+                            <label for='RightFrontBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr align="center">
+                    <td>@Html.LabelFor(model => model.RightRearBrake, htmlAttributes: new { @class = "control-label" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "RightRearBrakeOne", disabled = "disabled" })
+                            <label for='RightRearBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "RightRearBrakeTwo", disabled = "disabled" })
+                            <label for='RightRearBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "RightRearBrakeThree", disabled = "disabled" })
+                            <label for='RightRearBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.LeftFrontBrake)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RightFrontBrake)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RightFrontBrake)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LeftRearBrake)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LeftRearBrake)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RightRearBrake)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RightRearBrake)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Comments)

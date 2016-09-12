@@ -36,3 +36,93 @@ textarea {
     clear: left;
 }
 
+span.radio > input[type='radio'] {
+    display:none;    
+}
+span.radio > label {    
+    display:table;     
+}
+span.radio > label > span {
+    display:table-cell;
+    width:20px;    
+    white-space:nowrap;    
+}
+span.radio > label > span:before {
+    content:'';
+    width:40px;
+    height:40px;
+    left:20px;   
+    border-radius:50%;
+    display:inline-block;
+    vertical-align:middle;
+    position: relative;      
+}
+
+span.radio > label > span.checkboxOneSpan:before {
+    box-shadow: 0 0 4px 2px #26ca28 inset;      
+}
+
+span.radio > label > span.checkboxTwoSpan:before {
+    box-shadow: 0 0 4px 2px #ffd800 inset;      
+}
+
+span.radio > label > span.checkboxThreeSpan:before {
+    box-shadow: 0 0 4px 2px #ff0000 inset;      
+}
+
+span.radio > label > span:after {
+    content:'';
+    position:relative;    
+    display:inline-block;
+    vertical-align:middle; 
+    left:-20px;    
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:radial-gradient(circle at 2px 2px, white, #26ca28);
+    visibility:hidden;
+}
+
+span.radio > label > span.checkboxOneSpan:after {
+    box-shadow:0 0 3px 1px #26ca28;
+}
+
+span.radio > label > span.checkboxTwoSpan:after {
+    box-shadow:0 0 3px 1px #ffd800;
+}
+
+span.radio > label > span.checkboxThreeSpan:after {
+    box-shadow:0 0 3px 1px #ff0000;
+}
+
+span.radio > label > span.checkboxOneSpan:after {
+    background:radial-gradient(circle at 2px 2px, white, #26ca28);
+}
+
+span.radio > label > span.checkboxTwoSpan:after {
+    background:radial-gradient(circle at 2px 2px, white, #ffd800);
+}
+
+span.radio > label > span.checkboxThreeSpan:after {
+    background:radial-gradient(circle at 2px 2px, white, #ff0000);
+}
+
+span.radio > label:hover > span:before.checkboxOneSpan {
+    box-shadow: 0 0 5px 3px #26ca28 inset;
+}
+
+span.radio > label:hover > span:before.checkboxTwoSpan {
+    box-shadow: 0 0 5px 3px #ffd800 inset;
+}
+
+span.radio > label:hover > span:before.checkboxThreeSpan {
+    box-shadow: 0 0 5px 3px #ff0000 inset;
+}
+
+span.radio > input[type='radio']:checked + label > span:after {
+    visibility:visible;
+}
+span.radio {    
+    display:inline-block;
+    margin-bottom:3px;
+}

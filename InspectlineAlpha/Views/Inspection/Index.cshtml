@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<InspectlineAlpha.Models.Inspection>
-
 @{
     ViewBag.Title = "InspectionIndex";
 }
-
 <h2>Inspections</h2>
-
 <p>
     @Html.ActionLink("Create New", "CreateInspection")
 </p>
@@ -25,7 +22,6 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -42,11 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Employee.FullName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditInspection", new { id = item.InspectionID }) |
                 @Html.ActionLink("Details", "InspectionDetails", new { id = item.InspectionID }) |
                 @Html.ActionLink("Delete", "DeleteInspection", new { id = item.InspectionID })
             </td>
         </tr>
     }
-
 </table>

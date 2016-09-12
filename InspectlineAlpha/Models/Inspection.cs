@@ -105,7 +105,7 @@ namespace InspectlineAlpha.Models
         [DisplayName("Left Rear Brake")]
         public int LeftRearBrake { get; set; }
 
-        [DisplayName("Right Front Brake")]
+        [DisplayName("Right Rear Brake")]
         public int RightRearBrake { get; set; }
 
         [DisplayName("Comments")]

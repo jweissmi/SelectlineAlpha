@@ -61,23 +61,65 @@
         <table class="table">
             <tr align="center" style="background-color:#F0F0F0">
                 <td></td>
-                <td style="color:green"><b>7 mm <br />or greater</b></td>
-                <td style="color:goldenrod"><b>6 mm <br />4 mm</b></td>
-                <td style="color:red"><b>3 mm <br />or less</b></td>
+                <td><b>7 mm <br />or greater</b></td>
+                <td><b>6 mm <br />4 mm</b></td>
+                <td><b>3 mm <br />or less</b></td>
                 <td></td>
             </tr>
             <tr align="center">
                 <td>@Html.LabelFor(model => model.LeftFrontBrake, htmlAttributes: new { @class = "control-label" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree" })</td>
+                <td>
+                    <span class='radio checkboxOneSpan'>
+                        @Html.RadioButtonFor(model => model.LeftFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "LeftFrontBrakeOne" })
+                        <label for='LeftFrontBrakeOne'>
+                            <span class="checkboxOneSpan"></span>
+                        </label>
+                    </span>
+                </td>
+                <td>
+                    <span class='radio checkboxTwoSpan'>
+                        @Html.RadioButtonFor(model => model.LeftFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "LeftFrontBrakeTwo" })
+                        <label for='LeftFrontBrakeTwo'>
+                            <span class="checkboxTwoSpan"></span>
+                        </label>
+                    </span>
+                </td>
+                <td>
+                    <span class='radio checkboxThreeSpan'>
+                        @Html.RadioButtonFor(model => model.LeftFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "LeftFrontBrakeThree" })
+                        <label for='LeftFrontBrakeThree'>
+                            <span class="checkboxThreeSpan"></span>
+                        </label>
+                    </span>
+                </td>
                 <td></td>
             </tr>
             <tr align="center">
                 <td>@Html.LabelFor(model => model.LeftRearBrake, htmlAttributes: new { @class = "control-label" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftRearBrake, 1, htmlAttributes: new { @class = "checkboxOne" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo" })</td>
-                <td>@Html.RadioButtonFor(model => model.LeftRearBrake, 3, htmlAttributes: new { @class = "checkboxThree" })</td>
+                <td>
+                    <span class='radio checkboxOneSpan'>
+                        @Html.RadioButtonFor(model => model.LeftRearBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "LeftRearBrakeOne" })
+                        <label for='LeftRearBrakeOne'>
+                            <span class="checkboxOneSpan"></span>
+                        </label>
+                    </span>
+                </td>
+                <td>
+                    <span class='radio checkboxTwoSpan'>
+                        @Html.RadioButtonFor(model => model.LeftRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "LeftRearBrakeTwo" })
+                        <label for='LeftRearBrakeTwo'>
+                            <span class="checkboxTwoSpan"></span>
+                        </label>
+                    </span>
+                </td>
+                <td>
+                    <span class='radio checkboxThreeSpan'>
+                        @Html.RadioButtonFor(model => model.LeftRearBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "LeftRearBrakeThree" })
+                        <label for='LeftRearBrakeThree'>
+                            <span class="checkboxThreeSpan"></span>
+                        </label>
+                    </span>
+                </td>
                 <td></td>
             </tr>
         </table>
@@ -88,23 +130,65 @@
             <table class="table">
                 <tr align="center" style="background-color:#F0F0F0">
                     <td></td>
-                    <td style="color:green"><b>7 mm <br />or greater</b></td>
-                    <td style="color:goldenrod"><b>6 mm <br />4 mm</b></td>
-                    <td style="color:red"><b>3 mm <br />or less</b></td>
+                    <td><b>7 mm <br />or greater</b></td>
+                    <td><b>6 mm <br />4 mm</b></td>
+                    <td><b>3 mm <br />or less</b></td>
                     <td></td>
                 </tr>
                 <tr align="center">
                     <td>@Html.LabelFor(model => model.RightFrontBrake, htmlAttributes: new { @class = "control-label" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "RightFrontBrakeOne" })
+                            <label for='RightFrontBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "RightFrontBrakeTwo" })
+                            <label for='RightFrontBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.RightFrontBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "RightFrontBrakeThree" })
+                            <label for='RightFrontBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
                     <td></td>
                 </tr>
                 <tr align="center">
                     <td>@Html.LabelFor(model => model.RightRearBrake, htmlAttributes: new { @class = "control-label" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightRearBrake, 1, htmlAttributes: new { @class = "checkboxOne" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo" })</td>
-                    <td>@Html.RadioButtonFor(model => model.RightRearBrake, 3, htmlAttributes: new { @class = "checkboxThree" })</td>
+                    <td>
+                        <span class='radio checkboxOneSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 1, htmlAttributes: new { @class = "checkboxOne", id = "RightRearBrakeOne" })
+                            <label for='RightRearBrakeOne'>
+                                <span class="checkboxOneSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxTwoSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 2, htmlAttributes: new { @class = "checkboxTwo", id = "RightRearBrakeTwo" })
+                            <label for='RightRearBrakeTwo'>
+                                <span class="checkboxTwoSpan"></span>
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class='radio checkboxThreeSpan'>
+                            @Html.RadioButtonFor(model => model.RightRearBrake, 3, htmlAttributes: new { @class = "checkboxThree", id = "RightRearBrakeThree" })
+                            <label for='RightRearBrakeThree'>
+                                <span class="checkboxThreeSpan"></span>
+                            </label>
+                        </span>
+                    </td>
                     <td></td>
                 </tr>
             </table>
@@ -122,6 +206,7 @@
             </div>
         </div>
 }
+<br />
 
 <div>
     @Html.ActionLink("Back to List", "Index")
