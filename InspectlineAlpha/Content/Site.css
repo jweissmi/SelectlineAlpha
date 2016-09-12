@@ -21,7 +21,7 @@ input,
 select,
 textarea {
     max-width: 300px;
-    border-radius: 25px;
+    border-radius: 3px;
 }
 
 /*This is the style for the astericks indication a field on a form is required*/

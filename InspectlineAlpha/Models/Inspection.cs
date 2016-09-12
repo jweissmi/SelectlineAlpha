@@ -96,16 +96,16 @@ namespace InspectlineAlpha.Models
         [DisplayName("Inspection By")]
         public string EmployeeID { get; set; }
 
-        [DisplayName("Left Front Brake")]
+        [DisplayName("Left Front")]
         public int LeftFrontBrake { get; set; }
 
-        [DisplayName("Right Front Brake")]
+        [DisplayName("Right Front")]
         public int RightFrontBrake { get; set; }
 
-        [DisplayName("Left Rear Brake")]
+        [DisplayName("Left Rear")]
         public int LeftRearBrake { get; set; }
 
-        [DisplayName("Right Front Brake")]
+        [DisplayName("Right Front")]
         public int RightRearBrake { get; set; }
 
         [DisplayName("Comments")]

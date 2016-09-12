@@ -44,7 +44,7 @@ namespace InspectlineAlpha.Controllers
         // POST: Inspection/CreateInspection
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateInspection([Bind(Include = "CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, InspectionResultID, EmployeeID")] Inspection inspection)
+        public ActionResult CreateInspection([Bind(Include = "CustomerVehicleID, ShopID, InspectionDate, InspectionMileage, EmployeeID, LeftFrontBrake, RightFrontBrake, LeftRearBrake, RightRearBrake")] Inspection inspection)
         {
             if (ModelState.IsValid)
             {
