@@ -200,6 +200,7 @@
     <Content Include="Images\BrakeInspect.png" />
     <Content Include="Images\Comments.png" />
     <Content Include="Images\ExteriorInspect.png" />
+    <Content Include="Images\repair_shop_logo.png" />
     <Content Include="Images\TireInspect.png" />
     <Content Include="Images\UnderhoodInspect.png" />
     <Content Include="Images\UnderVehicleInspect.png" />
