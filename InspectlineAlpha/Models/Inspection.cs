@@ -84,6 +84,8 @@ namespace InspectlineAlpha.Models
 
     public class InspectionMetaData
     {
+        [DisplayName("Customer / Vehicle")]
+        public string CustomerVehicleID { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

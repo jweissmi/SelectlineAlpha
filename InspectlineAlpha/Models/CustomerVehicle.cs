@@ -22,7 +22,7 @@ namespace InspectlineAlpha.Models
             }
         }
 
-        [DisplayName("Customer and Vehicle")]
+        [DisplayName("Customer / Vehicle")]
         public string CustVeh
         {
             get
